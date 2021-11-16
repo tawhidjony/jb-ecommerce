@@ -9,7 +9,7 @@
     <title>Apartment Management System - @yield('title')</title>
 
     @include('layouts.partials.css')
-
+    @notifyCss
 </head>
 <body>
 
@@ -40,7 +40,7 @@
 
 {{--
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="bg-white shadow-sm navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -51,12 +51,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="mr-auto navbar-nav">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="ml-auto navbar-nav">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -103,5 +103,7 @@
      <!-- Scripts -->
      {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
      @include('layouts.partials.js')
+     <x:notify-messages />
+        @notifyJs
 </body>
 </html>
