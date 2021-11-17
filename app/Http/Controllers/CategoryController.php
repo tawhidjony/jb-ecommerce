@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 
 class CategoryController extends Controller
@@ -30,8 +31,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $createCategory = New Category();
-        return view('backend.category.create', compact('createCategory'));
+        $newItem = New Category();
+        return view('backend.category.create', compact('newItem'));
     }
 
     /**
@@ -42,10 +43,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
         try {
             $request->validate([
                 'name' => 'required',
             ]);
+
             $data = $request->all();
             $filePath = $this->StoreFile($request->file('photo'), 'upload/category');
             if ($filePath) {
@@ -53,6 +56,7 @@ class CategoryController extends Controller
             }else{
                 $data['photo'] ='';
             }
+            $data['uuid'] = Str::uuid();
             $storeCategory = Category::create($data);
 
             if($storeCategory){
@@ -87,7 +91,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $newItem = Category::find($category->id);
+        return view('backend.category.edit', compact('newItem'));
     }
 
     /**
@@ -112,7 +117,7 @@ class CategoryController extends Controller
                 $data['photo'] ='';
             }
 
-            $updateCategory = Category::update($data);
+            $updateCategory = $findCategory->update($data);
 
             if($updateCategory){
                 return redirect()->route('category.index')->with('Category has been success');
@@ -135,6 +140,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $newItem = Category::find($category->id);
+        if($newItem){
+            $this->DeleteFile($newItem->photo);
+            $newItem->delete();
+            return redirect()->route('category.index')->with('Category has been deleted');
+        }
+
     }
 }

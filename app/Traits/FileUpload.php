@@ -27,4 +27,10 @@ trait FileUpload {
         return  $path;
     }
 
+    public function DeleteFile($DeleteImg){
+        if (isset($DeleteImg)) {
+            Storage::delete($DeleteImg);
+        }
+    }
+
 }

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\RentCollection;
 use App\Models\User;
 use App\Traits\FileUpload;
 use Exception;

@@ -22,6 +22,14 @@
         </li>
         @endif
 
+        <li>
+            <a href="{{route('category.index')}}" >
+                <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
+                </div>
+                <div class="menu-title">Category</div>
+            </a>
+        </li>
+
         @if(auth()->user()->can('users.index') || auth()->user()->can('role.index') || auth()->user()->hasRole('super-admin'))
         <li>
             <a href="javascript:;" class="has-arrow">
