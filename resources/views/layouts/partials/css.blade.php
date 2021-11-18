@@ -15,8 +15,10 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
 	<!-- Icons CSS -->
 	<link rel="stylesheet" href="{{asset('assets/css/icons.css')}}" />
+
 	<!-- App CSS -->
 	<link rel="stylesheet" href="{{asset('assets/css/app.css')}}" />
 	<link rel="stylesheet" href="{{asset('assets/css/dark-sidebar.css')}}" />
 	<link rel="stylesheet" href="{{asset('assets/css/dark-theme.css')}}" />
 	<link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" />
+    @stack('css')

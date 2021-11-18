@@ -27,15 +27,22 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label for="photo" >{{ __('Upload Image') }}</label>
+            <label for="image" >{{ __('Upload Image') }}</label>
             <div class="input-group">
-                <input id="photo" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" name="photo" placeholder="icon" value="@if($newItem->photo){{$newItem->photo}}@else{{ old('photo') }}@endif" >
+                <input id="image" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" name="photo" placeholder="icon" value="@if($newItem->photo){{$newItem->photo}}@else{{ old('photo') }}@endif" >
 
                 @if ($errors->has('photo'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('photo') }}</strong>
                     </span>
                 @endif
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="image" >{{ __('Preview Image') }}</label>
+            <div class="input-group">
+                <img id="preview-image-before-upload" src="{{ $newItem->photo ? URL::to($newItem->photo) : "https://www.riobeauty.co.uk/images/product_image_not_found.gif" }}"
+                alt="preview image" style="width: 80px; height: 80px">
             </div>
         </div>
 

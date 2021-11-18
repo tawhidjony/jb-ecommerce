@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use FileUpload;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('backend.product.index', compact('products'));
     }
 
     /**
@@ -24,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $newItem = new Product();
+        return view('backend.product.create', compact('newItem'));
     }
 
     /**
@@ -35,7 +40,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->dd();
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $data = $request->all();
+        $filePath = $this->StoreFile($request->file('thumbnail'), 'upload/products');
+        if ($filePath) {
+            $data['thumbnail'] = $filePath;
+        }else{
+            $data['thumbnail'] ='';
+        }
+
+
+
     }
 
     /**

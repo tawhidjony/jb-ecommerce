@@ -16,6 +16,7 @@
 	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js')}}"></script>
 	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-au-mill.js')}}"></script>
 	<script src="{{asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/input-tags/js/tagsinput.js')}}"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -29,7 +30,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        </script>
+    </script>
     <script>
         $('input[name="collection_datetime"]').daterangepicker({
             singleDatePicker: true,
@@ -39,4 +40,5 @@
             }
         });
     </script>
+
     @stack('js')

@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
     Route::group(['middleware' => ['check_permission']], function () {
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('/category', CategoryController::class);
+        Route::resource('/product', ProductController::class);
         Route::resource('/users', UserController::class);
         Route::resource('/roles', RoleController::class);
     });
