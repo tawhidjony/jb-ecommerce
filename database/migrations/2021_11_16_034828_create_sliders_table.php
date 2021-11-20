@@ -17,6 +17,7 @@ class CreateSlidersTable extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->string('name')->nullable();
+            $table->string('link')->nullable();
             $table->string('photo');
             $table->timestamps();
         });

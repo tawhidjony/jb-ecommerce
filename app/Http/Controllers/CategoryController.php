@@ -105,6 +105,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         try {
+
             $request->validate([
                 'name' => 'required',
             ]);
@@ -118,7 +119,6 @@ class CategoryController extends Controller
             }
 
             $updateCategory = $findCategory->update($data);
-
             if($updateCategory){
                 return redirect()->route('category.index')->with('Category has been success');
             }else{
