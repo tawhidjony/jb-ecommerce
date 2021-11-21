@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     use FileUpload;
@@ -29,7 +31,8 @@ class ProductController extends Controller
     public function create()
     {
         $newItem = new Product();
-        return view('backend.product.create', compact('newItem'));
+        $categories = Category::all();
+        return view('backend.product.create', compact('newItem', 'categories'));
     }
 
     /**
@@ -40,21 +43,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->dd();
 
+      try {
         $request->validate([
             'name' => 'required',
         ]);
 
         $data = $request->all();
-        $filePath = $this->StoreFile($request->file('thumbnail'), 'upload/products');
+        $data['uuid'] = Str::uuid();
+        $filePath = $this->StoreFile($request->file('thumbnail'), 'upload/products/thumbnail');
         if ($filePath) {
             $data['thumbnail'] = $filePath;
         }else{
             $data['thumbnail'] ='';
         }
 
+        $productImage = $request->file('product_img');
+        foreach ($productImage as $file) {
+            $filePath = $this->StoreFile($file, 'upload/products/product_img');
+            if ($filePath) {
+                $data['product_img'][] = $filePath;
+            }
+        }
 
+        $productStore = Product::create($data);
+        if ($productStore) {
+            return redirect()->route('product.index')->with('Product Created Successfully');
+        }else{
+            return redirect()->route('product.index')->with('Product Created Failed');
+        }
+      } catch (\Throwable $th) {
+          throw $th;
+      }
 
     }
 

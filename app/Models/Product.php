@@ -10,4 +10,10 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'variation' => 'array',
+        'product_img' => 'array',
+    ];
+
 }

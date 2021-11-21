@@ -16,6 +16,24 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="category">{{ __('Category') }}</label>
+                    <div class="input-group">
+                        <select id="category"  name="category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}"
+                            name="category">
+                            <option value="">Select a category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if ($newItem->category_id == $category->id) selected @endif>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('category_id'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('category_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="price">{{ __('Price') }}</label>
                     <div class="input-group">
                         <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
@@ -43,7 +61,6 @@
                     <label for="formControlRange">Variation </label>
                     <select multiple data-role="tagsinput"  class="form-control" name="variation[]">
                         <option value="Amsterdam">Amsterdam</option>
-                        <option value="Amsterdamfg">Amsterdam</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -80,7 +97,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="fancy-file-upload" type="file" name="files" accept=".jpg, .png, image/jpeg, image/png" multiple>
+                    <input class="form-control" type="file" name="product_img[]" accept=".jpg, .png, image/jpeg, image/png" multiple>
                 </div>
 
     </div>
