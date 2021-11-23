@@ -88,7 +88,7 @@
           <div class="row">
               @foreach ($recentProduct as $key => $recentProducts)
                 <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{route('home.show', $recentProducts->uuid)}}">
+                    <a href="{{$recentProducts->uuid}}">
                     <div class="product-card">
                         <div class="product-image-area">
                         <img src="{{URL::to('frontend/assets/images/product-img/product-1/po-card.png')}}" alt="">
