@@ -19,7 +19,6 @@ class HomeController extends Controller
     public function show($uuid)
     {
         $productShow = Product::where('uuid', $uuid)->first();
-
         return view('frontend.product-details', compact('productShow'));
     }
 }
