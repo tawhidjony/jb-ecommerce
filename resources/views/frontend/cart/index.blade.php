@@ -71,15 +71,23 @@
                             </div>
                             <div class="p-quantity">
                             <div class="input-group">
-                                <input type="number" max="50000" min="1" value="1" class="form-control" aria-label="Username"
-                                aria-describedby="basic-addon1">
+                                <form action="{{route('cart.update')}}" method="POST">
+                                    @method('PUT')
+                                    @csrf
+                                    <input type="number" name="qty" value="{{$cartItem->qty}}" class="form-control" >
+                                    <input type="hidden" name="rowId" value="{{$cartItem->rowId}}" class="form-control" >
+                                    <input type="submit" class="btn btn-primary" style="color: #000" value="Update" >
+                                </form>
                             </div>
                             </div>
                             <div class="total-parice">
-                            <h4>RM<span class="total-price">{{$cartItem->price}}</span></h4>
+                            <h4>RM<span class="total-price">{{ $cartItem->price * $cartItem->qty }}</span></h4>
                             </div>
                             <div class="action">
-                            <a href="#">Delete</a>
+                                <form action="{{route('cart.destroy', $cartItem->rowId)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+                                </form>
                             </div>
                         </div>
                         </div>

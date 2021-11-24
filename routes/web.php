@@ -28,13 +28,10 @@ Route::get('/product-details/{uuid}', [FrontendHomeController::class, 'show'])->
 
 
 // ADD TO CART
-// Route::get('/cart', [FrontendCartController::class, 'cartIndex'])->name('cart.index');
-// Route::post('/add-to-cart', [CartController::class, 'addItemToCart'])->name('add.cart');
-// Route::put('/cart/update', [CartController::class, 'cartUpdate'])->name('cart.update');
-// Route::get('/cart/destroy/{rowId}', [CartController::class, 'cartDestroy'])->name('cart.destroy');
-
-Route::resource('cart', FrontendCartController::class);
-
+Route::get('cart', [FrontendCartController::class, 'cartIndex'])->name('cart.index');
+Route::post('add-to-cart', [FrontendCartController::class, 'addItemToCart'])->name('cart.store');
+Route::put('/cart/update', [FrontendCartController::class, 'cartUpdate'])->name('cart.update');
+Route::get('/cart/destroy/{rowId}', [FrontendCartController::class, 'cartDestroy'])->name('cart.destroy');
 
 Auth::routes();
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {

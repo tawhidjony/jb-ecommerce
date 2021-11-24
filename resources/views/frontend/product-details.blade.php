@@ -65,7 +65,7 @@
                     <h4>Quantity</h4>
                         <div class="form-group d-flex">
                         <input type="number" name="qty" value="1" class="form-control" id="inputPassword" min="1" max="100000">
-                        <input type="text" name="uuid" value="{{$productShow->uuid}}">
+                        <input type="hidden" name="uuid" value="{{$productShow->uuid}}">
                         <div class="item-available d-flex align-items-center">
                             {{-- <span class="available-count">23</span>
                             <h6>piece available</h6> --}}
