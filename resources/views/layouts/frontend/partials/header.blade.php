@@ -54,7 +54,7 @@
       <div class="container">
         <div class="contant-area d-flex justify-content-between align-items-center ">
           <div class="logo-area">
-            <a href="index.html"><img src="{{URL::to('frontend/assets/images/logo_b.png')}}" alt=""></a>
+            <a href="{{route('home.index')}}"><img src="{{URL::to('frontend/assets/images/logo_b.png')}}" alt=""></a>
           </div>
           <div class="search-area">
             <form class="form-inline">

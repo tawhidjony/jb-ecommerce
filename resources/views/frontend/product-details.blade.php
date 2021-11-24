@@ -59,22 +59,24 @@
                     @endforeach
                   </div>
                 </div>
-                <div class="quantity-area d-flex">
-                  <h4>Quantity</h4>
-                  <form>
-                    <div class="form-group d-flex">
-                      <input type="number" value="1" class="form-control" id="inputPassword" min="1" max="100000">
-                      <div class="item-available d-flex align-items-center">
-                        {{-- <span class="available-count">23</span>
-                        <h6>piece available</h6> --}}
-                      </div>
+                <form action="{{route('cart.store')}}" method="POST">
+                    @csrf
+                    <div class="quantity-area d-flex">
+                    <h4>Quantity</h4>
+                        <div class="form-group d-flex">
+                        <input type="number" name="qty" value="1" class="form-control" id="inputPassword" min="1" max="100000">
+                        <input type="text" name="uuid" value="{{$productShow->uuid}}">
+                        <div class="item-available d-flex align-items-center">
+                            {{-- <span class="available-count">23</span>
+                            <h6>piece available</h6> --}}
+                        </div>
+                        </div>
                     </div>
-                  </form>
-                </div>
-                <div class="button-area d-flex justify-content-start">
-                  <button class="add-cart">Add to cart</button>
-                  <button class="buy-now">buy now</button>
-                </div>
+                    <div class="button-area d-flex justify-content-start">
+                        <button type="submit" class="add-cart">Add to cart</button>
+                        <button class="buy-now">buy now</button>
+                    </div>
+                </form>
 
               </div>
             </div>
@@ -118,7 +120,7 @@
           </div>
 
           <div class="customar-comment-area">
-            <div class="single-customer  d-flex">
+            <div class="single-customer d-flex">
               <div class="customer-pic"><img src="assets/images/my_picture_squre.jpg" alt=""></div>
               <div class="customaer-info">
                 <h5>Alam Jahangir</h5>
@@ -137,7 +139,7 @@
                 <div class="date-time">25-8-2021</div>
               </div>
             </div>
-            <div class="single-customer  d-flex">
+            <div class="single-customer d-flex">
               <div class="customer-pic"><img src="assets/images/my_picture_squre.jpg" alt=""></div>
               <div class="customaer-info">
                 <h5>Alam Jahangir</h5>

@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\Frontend\CartController as FrontendCartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
@@ -25,8 +26,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendHomeController::class, 'index'])->name('home.index');
 Route::get('/product-details/{uuid}', [FrontendHomeController::class, 'show'])->name('home.show');
 
-// Route::view('/', 'frontend/welcome');
-// Route::view('/', 'frontend/welcome');
+
+// ADD TO CART
+// Route::get('/cart', [FrontendCartController::class, 'cartIndex'])->name('cart.index');
+// Route::post('/add-to-cart', [CartController::class, 'addItemToCart'])->name('add.cart');
+// Route::put('/cart/update', [CartController::class, 'cartUpdate'])->name('cart.update');
+// Route::get('/cart/destroy/{rowId}', [CartController::class, 'cartDestroy'])->name('cart.destroy');
+
+Route::resource('cart', FrontendCartController::class);
+
 
 Auth::routes();
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
