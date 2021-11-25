@@ -1,5 +1,3 @@
-  <!-- header section -->
-
   <header class="main-top-bar">
     <!-- top-bar start -->
     <div class="top-bar">
@@ -65,8 +63,8 @@
           <!-- cart area start -->
           <div class="cart-area d-flex justify-content-between">
             <div class="cart-icon">
-              <a href="shoping-cart-user-account.html"><i class="fas fa-cart-arrow-down"></i>
-                <div class="item-count">3</div>
+              <a href="{{route('cart.index')}}"><i class="fas fa-cart-arrow-down"></i>
+                <div class="item-count">{{ Cart::count() }}</div>
               </a>
 
               <!-- cart popup contain area start -->
@@ -75,52 +73,24 @@
                   <h2>Recently Added Products</h2>
                 </div>
                 <ul>
-                  <a href="shoping-cart-user-account.html">
-                    <li>
-                      <div class="product-details d-flex justify-content-between">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-1/po-2.png')}}" alt="">
-                        <div class="product-name">
-                          <h2>iPhone 13 Pro Max 256GB A15 Bionic chip, Super Retina XDR display with ProMotion.
-                          </h2>
-                        </div>
-                        <div class="product-price">
-                          <h2>$104500</h2>
-                        </div>
-                      </div>
-                    </li>
-                  </a>
-                  <a href="shoping-cart-user-account.html">
-                    <li>
-                      <div class="product-details d-flex justify-content-between">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-2/watch-main.jpg')}}" alt="">
-                        <div class="product-name">
-                          <h2>Apple Watch, Gold Aluminum Case with Sport Loop, 40mm.
-                          </h2>
-                        </div>
-                        <div class="product-price">
-                          <h2>$24250</h2>
-                        </div>
-                      </div>
-                    </li>
-                  </a>
-                  <a href="shoping-cart-user-account.html">
-                    <li>
-                      <div class="product-details d-flex justify-content-between">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-5/airpods-main.png')}}" alt="">
-                        <div class="product-name">
-                          <h2>AirPods Max with 6 months of Apple Music free!
-                          </h2>
-                        </div>
-                        <div class="product-price">
-                          <h2>$43200</h2>
-                        </div>
-                      </div>
-                    </li>
-                  </a>
-
+                    @foreach (Cart::content() as $items)
+                        <a href="shoping-cart-user-account.html">
+                            <li>
+                                <div class="product-details d-flex justify-content-between">
+                                    <img src="{{URL::to('frontend/assets/images/product-img/product-1/po-2.png')}}" alt="">
+                                    <div class="product-name">
+                                    <h2>{{$items->name}}</h2>
+                                    </div>
+                                    <div class="product-price">
+                                    <h2>$104500</h2>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    @endforeach
                 </ul>
                 <div class="text-center footer-area">
-                  <a href="shoping-cart-user-account.html" class="primary-btn">View Shoping Cart</a>
+                  <a href="{{route('cart.index')}}" class="primary-btn">View Shoping Cart</a>
                 </div>
               </div>
               <!-- cart popup contain area end -->
