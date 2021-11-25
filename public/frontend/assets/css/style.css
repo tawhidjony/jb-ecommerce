@@ -1512,12 +1512,33 @@ a:hover {
           flex: 0 0 12rem;
 }
 
-.section-product-detalis .product-briefing-area .product-variation .variation-count .v-list {
-  width: auto;
-  display: inline-block;
+.section-product-detalis .product-briefing-area .product-variation .variation-count {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
-.section-product-detalis .product-briefing-area .product-variation .variation-count a {
+.section-product-detalis .product-briefing-area .product-variation .variation-count .custom-control {
+  padding: 0;
+}
+
+.section-product-detalis .product-briefing-area .product-variation .variation-count .custom-control input:checked ~ .custom-control-label {
+  color: #ff4d00;
+  border-color: #ff4d00;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.section-product-detalis .product-briefing-area .product-variation .variation-count .custom-control-label {
   display: inline-block;
   font-size: 1.5rem;
   color: #8b8b8b;
@@ -1526,22 +1547,15 @@ a:hover {
   padding: 0.5rem 1rem;
   margin-right: 1rem;
   margin-top: 1rem;
+  cursor: pointer;
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
 }
 
-.section-product-detalis .product-briefing-area .product-variation .variation-count .select {
-  color: #ff4d00;
-  border-color: #ff4d00;
-}
-
-.section-product-detalis .product-briefing-area .product-variation .variation-count a:hover {
-  color: #ff4d00;
-  border-color: #ff4d00;
-  -webkit-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
+.section-product-detalis .product-briefing-area .product-variation .variation-count .custom-control-label::before, .section-product-detalis .product-briefing-area .product-variation .variation-count .custom-control-label::after {
+  left: 0;
+  opacity: 0;
 }
 
 .section-product-detalis .product-briefing-area .quantity-area {
@@ -2344,11 +2358,13 @@ a:hover {
   color: #40ceb2;
   border-right: solid 0.1rem #cfcfcf;
   padding-right: 1rem;
+  text-transform: uppercase;
 }
 
 .account-detalis .purchase-area .single-product .header-ber .p-status {
   color: #ff4d00;
   margin-left: 1rem;
+  text-transform: uppercase;
 }
 
 .account-detalis .purchase-area .single-product .header-ber .order-id {
@@ -2356,6 +2372,156 @@ a:hover {
   font-weight: 600;
   color: #acaaaa;
   float: right;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali {
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+      -ms-flex: auto;
+          flex: auto;
+  padding-left: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #acaaaa;
+  text-align: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-flex: 1 0 0;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  padding-right: 2rem;
+  border-right: solid 0.1rem #cfcfcf;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali span {
+  color: #ff4d00;
+  margin-left: 0.1rem;
+  font-weight: 600;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali h4 {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  font-weight: 600;
+  color: #8b8b8b;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali .sub-total {
+  padding: 0 0.5rem;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali .shipping-fee {
+  padding: 0.5rem;
+  border-bottom: 0.1rem solid #cfcfcf;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali h5 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali .total {
+  padding-top: 0.5rem;
+}
+
+.account-detalis .purchase-area .single-product .product-price-detali .total h5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #8b8b8b;
+}
+
+.account-detalis .purchase-area .single-product .payment-mathod {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 25%;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.account-detalis .purchase-area .single-product .payment-mathod .payment-type-area {
+  position: relative;
+}
+
+.account-detalis .purchase-area .single-product .payment-mathod span {
+  position: absolute;
+  color: #fff;
+  background-color: #40ceb2;
+  padding: .2rem .5rem;
+  font-weight: 700;
+  -webkit-border-radius: .5rem;
+          border-radius: .5rem;
+  font-size: 1.1rem;
+  width: 80%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: -10px;
+}
+
+.account-detalis .purchase-area .single-product .payment-mathod h5 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #8b8b8b;
+  -webkit-border-radius: .5rem;
+          border-radius: .5rem;
+  display: inline-block;
+  padding: 1rem 2rem;
+  padding-top: 1.2rem;
+  border: solid 0.2rem #40ceb2;
+}
+
+.account-detalis .purchase-area .single-product .shiping-address {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 0;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  text-align: left;
+}
+
+.account-detalis .purchase-area .single-product .shiping-address h3 {
+  font-size: 1.5rem;
+  color: #8b8b8b;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+  margin-bottom: .5rem;
+}
+
+.account-detalis .purchase-area .single-product .shiping-address h3::after {
+  content: "";
+  background-color: #40ceb2;
+  height: 0.1rem;
+  width: 20%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.account-detalis .purchase-area .single-product .shiping-address h4 {
+  font-size: 1.4rem;
+  color: #8b8b8b;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.account-detalis .purchase-area .single-product .shiping-address span {
+  font-size: 1.2rem;
+  color: #acaaaa;
+  font-weight: 600;
+}
+
+.account-detalis .purchase-area .single-product .product-list-area {
+  padding: 2rem 0;
 }
 
 .account-detalis .purchase-area .single-product .product-area {
@@ -2425,6 +2591,10 @@ a:hover {
 .account-detalis .purchase-area .single-product .product-area .product-price span {
   color: #ff4d00;
   margin-left: 0.5rem;
+}
+
+.account-detalis .purchase-area .single-product .product-area:first-child {
+  border-top: solid 0.1rem #cfcfcf;
 }
 
 .account-detalis .purchase-area .single-product .footer-area {
@@ -2600,6 +2770,10 @@ a:hover {
   font-size: 1.4rem;
   font-weight: 600;
   color: #8b8b8b;
+}
+
+.account-detalis .single-p-detalis .single-product .order-summary-area {
+  margin-top: 3rem;
 }
 
 .account-detalis .single-p-detalis .single-product .delivary-summary {
@@ -2844,6 +3018,7 @@ a:hover {
   border: 0;
   margin: 0;
   padding: 0;
+  border: 0 !important;
 }
 
 .account-detalis .shoping-cart-area .single-product .product-area .product-detalis {
@@ -3165,15 +3340,101 @@ a:hover {
           flex: 0 0 40%;
 }
 
+.account-detalis .p-checkout .single-product .middle-form {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 0;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  padding: 0;
+}
+
+.account-detalis .p-checkout .single-product .middle-form .p-quantity {
+  position: relative;
+  padding: 0 !important;
+}
+
+.account-detalis .p-checkout .single-product .middle-form .p-quantity input {
+  border: 0;
+  text-align: center;
+}
+
+.account-detalis .p-checkout .single-product .middle-form .p-quantity input:focus {
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+}
+
+.account-detalis .p-checkout .single-product .middle-form .p-quantity .update-but {
+  position: absolute;
+  border: 0;
+  background-color: #ff4d00d2;
+  font-size: 1.2rem;
+  border: solid 0.1rem #ff4d00d2;
+  padding: 0.3rem 0.8rem;
+  width: 80%;
+  color: #fff;
+  font-weight: 700;
+  -webkit-border-radius: 0.5rem;
+          border-radius: 0.5rem;
+  bottom: -100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.account-detalis .p-checkout .single-product .middle-form .p-quantity .update-but:hover {
+  background-color: #fff;
+  color: #ff4d00d2;
+  border: solid 0.1rem #ff4d00d2;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.account-detalis .p-checkout .single-product .del-action-form {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 10%;
+      -ms-flex: 0 0 10%;
+          flex: 0 0 10%;
+  padding: 0;
+  text-align: center;
+}
+
+.account-detalis .p-checkout .single-product .del-action-form button {
+  border: solid 0.1rem #acaaaa;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.8rem;
+  color: #acaaaa;
+  font-weight: 700;
+  -webkit-border-radius: 0.5rem;
+          border-radius: 0.5rem;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.account-detalis .p-checkout .single-product .del-action-form button:hover {
+  background-color: #acaaaa;
+  color: #fff;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
 .account-detalis .p-checkout .single-product .p-detalis-right-side .product-price,
 .account-detalis .p-checkout .single-product .p-detalis-right-side .p-quantity,
 .account-detalis .p-checkout .single-product .p-detalis-right-side .total-parice {
   position: relative;
   border: solid 0.2rem #40ceb2;
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 27%;
-      -ms-flex: 0 0 27%;
-          flex: 0 0 27%;
+  -webkit-flex: 0 0 31%;
+      -ms-flex: 0 0 31%;
+          flex: 0 0 31%;
   padding: 0.7rem 0;
   padding-bottom: 0.5rem;
   font-size: 1.4rem;
@@ -4151,4 +4412,16 @@ a:hover {
             flex: 0 0 25%;
     max-width: 25%;
   }
+}
+.no-product {
+    background-color: #fff;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.no-product h3 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 30px;
 }
