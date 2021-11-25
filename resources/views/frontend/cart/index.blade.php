@@ -45,7 +45,7 @@
                                                 @csrf
                                                 <div class="p-detalis-right-side d-flex justify-content-between">
                                                     <div class="product-price">
-                                                        <h4>RM<span class="unit-price">{{ $cartItem->price }}</span>
+                                                        <h4>BDT<span class="unit-price">{{ $cartItem->price }}</span>
                                                         </h4>
                                                         <span class="p-info"> Unit Price</span>
                                                     </div>
@@ -108,7 +108,7 @@
                             <div class="payment-method-check was-validated">
                                 <h4>Select Payment Method</h4>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                    <input type="radio" id="customRadio1" name="payment" value="cash on delevery" class="custom-control-input">
                                     <label class="custom-control-label" for="customRadio1">
                                         <div class="payment-option">
                                             <span class="option">Cash On Delivery</span>
@@ -117,11 +117,12 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio paypal-online">
-                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                    <input type="radio" id="customRadio2" name="payment" value="bank" class="custom-control-input">
                                     <label class="custom-control-label" for="customRadio2">
                                         <div class="payment-option">
-                                            <span class="option"><img src="assets/images/patner/paypal-logo.png"
-                                                    alt=""></span>
+                                            <span class="option">
+                                                <img src="{{asset('frontend/assets/images/patner/paypal-logo.png')}}" alt="">
+                                                </span>
                                             <span class="note">Credit/Debit Card or Paypal online</span>
                                         </div>
                                     </label>
@@ -131,16 +132,16 @@
 
                             <div class="content-area-palce-order">
                                 <div class="sub-total-area d-flex justify-content-between">
-                                    <h2>Subtotal<span class="item-count">(3)</span>Item</h2>
-                                    <h3>RM<span class="subtotal">{{$grand_total}}</span></h3>
+                                    <h2>Subtotal<span class="item-count"></span></h2>
+                                    <h3>BDT<span class="subtotal">{{$grand_total}}</span></h3>
                                 </div>
                                 <div class="shipping-fee-area d-flex justify-content-between">
                                     <h2>Shipping Fee</h2>
-                                    <h3>Bdt<span class="shipping-fee">0</span></h3>
+                                    <h3>BDT<span class="shipping-fee">0</span></h3>
                                 </div>
                                 <div class="total-area d-flex justify-content-between">
                                     <h2>Total<span class="gst">(0%)</span>GST</h2>
-                                    <h3>Bdt<span class="subtotal">171950</span></h3>
+                                    <h3>BDT<span class="subtotal">{{$grand_total}}</span></h3>
                                 </div>
                             </div>
                             <a href="purchase-detalis-user-account.html" class="checkout-button">CHECKOUT<i

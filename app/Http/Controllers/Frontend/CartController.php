@@ -24,7 +24,10 @@ class CartController extends Controller
             'price'     =>  $product->price,
             'qty'       =>  $request->qty,
             'weight'    =>  '0',
-            'options'   =>  [ 'photo' => $product->thumbnail ]
+            'options'   =>  [
+                                'photo' => $product->thumbnail,
+                                'variation' => $product->variation
+                            ]
         ]);
 
         if($addCart){

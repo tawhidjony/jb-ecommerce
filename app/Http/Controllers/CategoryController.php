@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -147,5 +148,13 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with('Category has been deleted');
         }
 
+    }
+
+
+    public function getCategoryProduct($uuid){
+        $categoryId = Category::where('uuid', $uuid)->first();
+        $categoryAll = Category::all();
+        $categoryProduct = Product::where('category_id', $categoryId->id)->get();
+        return view('frontend.category-product', compact('categoryProduct', 'categoryAll'));
     }
 }

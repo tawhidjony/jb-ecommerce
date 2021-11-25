@@ -61,7 +61,7 @@
         </div>
         <div class="row margin-none">
             @foreach ($category as $key => $categories)
-                <a href="search-result.html" class="item-box d-flex">
+                <a href="{{route('category.product', $categories->uuid)}}" class="item-box d-flex">
                 <div class="img-area">
                   <img src="{{URL::to($categories->photo)}}" alt="">
                 </div>
@@ -91,14 +91,14 @@
                     <a href="{{route('home.show', $recentProducts->uuid)}}">
                     <div class="product-card">
                         <div class="product-image-area">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-1/po-card.png')}}" alt="">
+                        <img src="{{URL::to($recentProducts->thumbnail)}}" alt="">
                         </div>
                         <div class="product-heading">
                         <h4>{{$recentProducts->name}}</h4>
                         </div>
                         <div class="product-price">
                         {{-- <span class="before-price price">Bdt<strong>110000</strong> </span> --}}
-                        <span class="after-price price">RM <strong>{{$recentProducts->price}}</strong></span>
+                        <span class="after-price price">BDT <strong>{{$recentProducts->price}}</strong></span>
                         </div>
                         <div class="p-card-footer d-flex justify-content-between">
                         {{-- <div class="rating d-flex">
@@ -139,304 +139,39 @@
         <!-- main product area start -->
         <div class="main-product-area">
           <div class="row">
-            <!-- single product card start -->
+            @foreach ($recentProduct as $key => $recentProducts)
             <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-              <a href="product-details.html">
+                <a href="{{route('home.show', $recentProducts->uuid)}}">
                 <div class="product-card">
-                  <div class="product-image-area">
-                    <img src="{{URL::to('frontend/assets/images/product-img/product-1/po-card.png')}}" alt="">
-                  </div>
-                  <div class="product-heading">
-                    <h4>iPhone 13 Pro Max 256GB A15 Bionic chip. </h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="before-price price">Bdt<strong>110000</strong> </span>
-                    <span class="after-price price">Bdt<strong>104500</strong></span>
-                  </div>
-                  <div class="p-card-footer d-flex justify-content-between">
-                    <div class="rating d-flex">
-                      <img src="{{URl::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                      <span class="p-sold-count">(10)</span>
+                    <div class="product-image-area">
+                    <img src="{{URL::to($recentProducts->thumbnail)}}" alt="">
+                    </div>
+                    <div class="product-heading">
+                    <h4>{{$recentProducts->name}}</h4>
+                    </div>
+                    <div class="product-price">
+                    {{-- <span class="before-price price">Bdt<strong>110000</strong> </span> --}}
+                    <span class="after-price price">BDT <strong>{{$recentProducts->price}}</strong></span>
+                    </div>
+                    <div class="p-card-footer d-flex justify-content-between">
+                    {{-- <div class="rating d-flex">
+                        <img src="{{URL::to('fronten/assets/images/review-image/5star.png')}}" alt="">
+                        <span class="p-sold-count">(10)</span>
                     </div>
                     <div class="shop-location">
-                      <h4>Dhaka</h4>
+                        <h4>Dhaka</h4>
+                    </div> --}}
                     </div>
-                  </div>
-                  <div class="special-tag">
+                    {{-- <div class="special-tag">
                     <span class="p-special-tag">Recommend</span>
-                  </div>
-                  <div class="offer-percent">
+                    </div>
+                    <div class="offer-percent">
                     <span class="p-percent">5%</span><br>OFF
-                  </div>
+                    </div> --}}
                 </div>
-              </a>
+                </a>
             </div>
-            <!-- single product card end -->
-            <!-- single product card start -->
-            <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-              <a href="product-details.html">
-                <div class="product-card">
-                  <div class="product-image-area">
-                    <img src="{{URL::to('frontend/assets/images/product-img/product-2/watch-main.jpg')}}" alt="">
-                  </div>
-                  <div class="product-heading">
-                    <h4>Apple Watch, Gold Aluminum Case with Sport Loop, 40mm. </h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="before-price price">Bdt<strong>25000</strong> </span>
-                    <span class="after-price price">Bdt<strong>24250</strong></span>
-                  </div>
-                  <div class="p-card-footer d-flex justify-content-between">
-                    <div class="rating d-flex">
-                      <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                      <span class="p-sold-count">(32)</span>
-                    </div>
-                    <div class="shop-location">
-                      <h4>Dhaka</h4>
-                    </div>
-                  </div>
-                  <div class="special-tag">
-                    <span class="p-special-tag">Recommend</span>
-                  </div>
-                  <div class="offer-percent">
-                    <span class="p-percent">3%</span><br>OFF
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- single product card end -->
-            <!-- single product card start -->
-            <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-              <a href="product-details.html">
-                <div class="product-card">
-                  <div class="product-image-area">
-                    <img src="{{URL::to('frontend/assets/images/product-img/product-3/laptop-main.png')}}" alt="">
-                  </div>
-                  <div class="product-heading">
-                    <h4>MacBook Pro, 16-inch,10-Core CPU 16-Core GPU, 16GB Unified Memory, 1TB SSD Storage¹. </h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="before-price price">Bdt<strong>230000</strong> </span>
-                    <span class="after-price price">Bdt<strong>229995</strong></span>
-                  </div>
-                  <div class="p-card-footer d-flex justify-content-between">
-                    <div class="rating d-flex">
-                      <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                      <span class="p-sold-count">(7)</span>
-                    </div>
-                    <div class="shop-location">
-                      <h4>Dhaka</h4>
-                    </div>
-                  </div>
-                  <div class="special-tag">
-                    <span class="p-special-tag">Recommend</span>
-                  </div>
-                  <div class="offer-percent">
-                    <span class="p-percent">5%</span><br>OFF
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- single product card end -->
-            <!-- single product card start -->
-            <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-              <a href="product-details.html">
-                <div class="product-card">
-                  <div class="product-image-area">
-                    <img src="{{URL::to('frontend/assets/images/product-img/product-4/tablet-main.png')}}" alt="">
-                  </div>
-                  <div class="product-heading">
-                    <h4>iPad Air 256GB, Wi-Fi + Cellular model.</h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="before-price price">Bdt<strong>75000</strong> </span>
-                    <span class="after-price price">Bdt<strong>73500</strong></span>
-                  </div>
-                  <div class="p-card-footer d-flex justify-content-between">
-                    <div class="rating d-flex">
-                      <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                      <span class="p-sold-count">(11)</span>
-                    </div>
-                    <div class="shop-location">
-                      <h4>Dhaka</h4>
-                    </div>
-                  </div>
-                  <div class="special-tag">
-                    <span class="p-special-tag">Recommend</span>
-                  </div>
-                  <div class="offer-percent">
-                    <span class="p-percent">2%</span><br>OFF
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- single product card end -->
-            <!-- single product card start -->
-            <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-              <a href="product-details.html">
-                <div class="product-card">
-                  <div class="product-image-area">
-                    <img src="{{URL::to('frontend/assets/images/product-img/product-5/airpods-main.png')}}" alt="">
-                  </div>
-                  <div class="product-heading">
-                    <h4>AirPods Max with 6 months of Apple Music free!</h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="before-price price">Bdt<strong>45000</strong> </span>
-                    <span class="after-price price">Bdt<strong>43200</strong></span>
-                  </div>
-                  <div class="p-card-footer d-flex justify-content-between">
-                    <div class="rating d-flex">
-                      <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                      <span class="p-sold-count">(13)</span>
-                    </div>
-                    <div class="shop-location">
-                      <h4>Dhaka</h4>
-                    </div>
-                  </div>
-                  <div class="special-tag">
-                    <span class="p-special-tag">Recommend</span>
-                  </div>
-                  <div class="offer-percent">
-                    <span class="p-percent">4%</span><br>OFF
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- single product card end -->
-                <!-- single product card start -->
-                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                  <a href="product-details.html">
-                    <div class="product-card">
-                      <div class="product-image-area">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-2/watch-main.jpg')}}" alt="">
-                      </div>
-                      <div class="product-heading">
-                        <h4>Apple Watch, Gold Aluminum Case with Sport Loop, 40mm. </h4>
-                      </div>
-                      <div class="product-price">
-                        <span class="before-price price">Bdt<strong>25000</strong> </span>
-                        <span class="after-price price">Bdt<strong>24250</strong></span>
-                      </div>
-                      <div class="p-card-footer d-flex justify-content-between">
-                        <div class="rating d-flex">
-                          <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                          <span class="p-sold-count">(32)</span>
-                        </div>
-                        <div class="shop-location">
-                          <h4>Dhaka</h4>
-                        </div>
-                      </div>
-                      <div class="special-tag">
-                        <span class="p-special-tag">Recommend</span>
-                      </div>
-                      <div class="offer-percent">
-                        <span class="p-percent">3%</span><br>OFF
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <!-- single product card end -->
-                <!-- single product card start -->
-                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                  <a href="product-details.html">
-                    <div class="product-card">
-                      <div class="product-image-area">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-3/laptop-main.png')}}" alt="">
-                      </div>
-                      <div class="product-heading">
-                        <h4>MacBook Pro, 16-inch,10-Core CPU 16-Core GPU, 16GB Unified Memory, 1TB SSD Storage¹. </h4>
-                      </div>
-                      <div class="product-price">
-                        <span class="before-price price">Bdt<strong>230000</strong> </span>
-                        <span class="after-price price">Bdt<strong>229995</strong></span>
-                      </div>
-                      <div class="p-card-footer d-flex justify-content-between">
-                        <div class="rating d-flex">
-                          <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                          <span class="p-sold-count">(7)</span>
-                        </div>
-                        <div class="shop-location">
-                          <h4>Dhaka</h4>
-                        </div>
-                      </div>
-                      <div class="special-tag">
-                        <span class="p-special-tag">Recommend</span>
-                      </div>
-                      <div class="offer-percent">
-                        <span class="p-percent">5%</span><br>OFF
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <!-- single product card end -->
-                <!-- single product card start -->
-                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                  <a href="product-details.html">
-                    <div class="product-card">
-                      <div class="product-image-area">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-4/tablet-main.png')}}" alt="">
-                      </div>
-                      <div class="product-heading">
-                        <h4>iPad Air 256GB, Wi-Fi + Cellular model.</h4>
-                      </div>
-                      <div class="product-price">
-                        <span class="before-price price">Bdt<strong>75000</strong> </span>
-                        <span class="after-price price">Bdt<strong>73500</strong></span>
-                      </div>
-                      <div class="p-card-footer d-flex justify-content-between">
-                        <div class="rating d-flex">
-                          <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                          <span class="p-sold-count">(11)</span>
-                        </div>
-                        <div class="shop-location">
-                          <h4>Dhaka</h4>
-                        </div>
-                      </div>
-                      <div class="special-tag">
-                        <span class="p-special-tag">Recommend</span>
-                      </div>
-                      <div class="offer-percent">
-                        <span class="p-percent">2%</span><br>OFF
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <!-- single product card end -->
-                <!-- single product card start -->
-                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                  <a href="product-details.html">
-                    <div class="product-card">
-                      <div class="product-image-area">
-                        <img src="{{URL::to('frontend/assets/images/product-img/product-5/airpods-main.png')}}" alt="">
-                      </div>
-                      <div class="product-heading">
-                        <h4>AirPods Max with 6 months of Apple Music free!</h4>
-                      </div>
-                      <div class="product-price">
-                        <span class="before-price price">Bdt<strong>45000</strong> </span>
-                        <span class="after-price price">Bdt<strong>43200</strong></span>
-                      </div>
-                      <div class="p-card-footer d-flex justify-content-between">
-                        <div class="rating d-flex">
-                          <img src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt="">
-                          <span class="p-sold-count">(13)</span>
-                        </div>
-                        <div class="shop-location">
-                          <h4>Dhaka</h4>
-                        </div>
-                      </div>
-                      <div class="special-tag">
-                        <span class="p-special-tag">Recommend</span>
-                      </div>
-                      <div class="offer-percent">
-                        <span class="p-percent">4%</span><br>OFF
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <!-- single product card end -->
-
+          @endforeach
           </div>
         </div>
         <!-- main product area start -->

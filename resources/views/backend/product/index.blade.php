@@ -20,19 +20,25 @@
                         <tr>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Icon</th>
-                            <th class="text-center">Action</th>
+                            <th>Price</th>
+                            <th>Variations</th>
+                            {{-- <th class="text-center">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($products as $key => $item )
                             <tr>
                                 <td>
-                                    <img src="{{URL::to($item->photo)}}" style="width: 50px; height: 50px; border-radius: 50px; border: 1px solid; padding: 2px;">
+                                    <img src="{{URL::to($item->thumbnail)}}" style="width: 50px; height: 50px; border-radius: 50px; border: 1px solid; padding: 2px;">
                                 </td>
                                 <td>{{$item->name}}</td>
-                                <td>{{$item->icon}}</td>
+                                <td>{{$item->price}}</td>
                                 <td>
+                                    @foreach ($item->variation as $variations)
+                                        {{$variations}},
+                                    @endforeach
+                                </td>
+                                {{-- <td>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{route('category.edit', $item->id)}}"><button class="btn btn-danger btn-sm "><i class="bx bx-edit-alt"></i>Edit </button></a>
                                         <form action="{{route('category.destroy', $item->id)}}", method="POST" class="ml-3">
@@ -41,7 +47,7 @@
                                             <button type="submit" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i> Delete</button>
                                         </form>
                                     </div>
-                                </td>
+                                </td> --}}
                             </tr>
                         @empty
                             <tr>

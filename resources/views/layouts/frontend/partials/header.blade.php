@@ -1,3 +1,4 @@
+
   <header class="main-top-bar">
     <!-- top-bar start -->
     <div class="top-bar">
@@ -28,13 +29,13 @@
                   <span>Help</span>
                 </div>
               </a>
-              <a href="signup.html">
+              <a href="{{route('customer.register')}}">
                 <div class="link-area d-flex">
                   <i class="fas fa-user-plus"></i>
                   <span class="strong">Sing Up</span>
                 </div>
               </a>
-              <a href="login.html">
+              <a href="{{route('customer.login')}}">
                 <div class="link-area d-flex">
                   <i class="fas fa-sign-in-alt"></i>
                   <span class="strong">Login</span>
@@ -82,7 +83,7 @@
                                     <h2>{{$items->name}}</h2>
                                     </div>
                                     <div class="product-price">
-                                    <h2>$104500</h2>
+                                    <h2>BDT {{$items->price}}</h2>
                                     </div>
                                 </div>
                             </li>
@@ -107,7 +108,7 @@
                   <span>Jahangir Alam</span>
                   <div class="user-account-area">
 
-                    <a href="personal-detalis-user-account.html">Account</a>
+                    <a href="{{route('customer.index')}}">Account</a>
                     <a href="purchase-detalis-user-account.html">Purchase</a>
                     <a href="shoping-cart-user-account.html">Shopping Cart</a>
                     <a href="logout-index.html">Logout</a>
@@ -143,22 +144,15 @@
 
               <div class="mega-menu-area">
                 <div class="category-col">
-                  <a href="search-result.html"><i class="fas fa-laptop-medical"></i>Electronics</a>
-                  <a href="#"><i class="fas fa-mobile-alt"></i>Smart Phones</a>
-                  <a href="#"><i class="fas fa-camera-retro"></i>Cameras & Photo</a>
-                  <a href="#"><i class="fas fa-female"></i>Women's Fashion</a>
-                  <a href="#"><i class="fas fa-male"></i>Men's Fashion</a>
-                  <a href="#"><i class="fas fa-heartbeat"></i>Healthy & Beauty</a>
-                  <a href="#"><i class="fas fa-gift"></i>Gift Ideas</a>
-                  <a href="#"><i class="fas fa-gamepad"></i>Toy & Games</a>
-                  <a href="#"><i class="fas fa-blender"></i>Cooking</a>
-                  <a href="#"><i class="fas fa-laptop-house"></i>Home & Garden</a>
-                  <a href="#"><i class="fas fa-house-user"></i>Home Appliance</a>
-                  <a href="#"><i class="fas fa-swatchbook"></i>Accessories</a>
+
+                    @foreach ( \App\Models\Category::all() as $items)
+                        <a href="{{route('category.product', $items->uuid)}}"> <i class="{{$items->icon}}"></i>{{$items->name}}</a>
+                    @endforeach
+
                 </div>
               </div>
             </div>
-            <a href="index.html">Home</a>
+            <a href="{{route('home.index')}}">Home</a>
             <a href="#">Special Offer</a>
             <a href="#">About Us</a>
           </div>

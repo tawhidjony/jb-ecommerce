@@ -49,17 +49,21 @@
                   <span class="special-word">Money Back</span>
                 </div>
                 <div class="product-price">
-                  <h1>RM <span class="p-price">{{$productShow->price}}</span></h1>
+                  <h1>BDT <span class="p-price">{{$productShow->price}}</span></h1>
                 </div>
+                <form action="{{route('cart.store')}}" method="POST">
                 <div class="product-variation d-flex">
                   <h4>Variation</h4>
                   <div class="variation-count">
-                    @foreach ($productShow->variation as $variation)
-                     <div class="v-list"><a href="#" class="select">{{$variation}}</a></div>
+                    @foreach ($productShow->variation as $key=>$variation)
+                     <div class="custom-control custom-radio">
+                        <input type="radio" id="customRadio-{{ $key+1}}" name="variation" value="{{$variation}}" class="custom-control-input" required>
+                        <label class="custom-control-label" for="customRadio-{{ $key+1}}">{{$variation}}</label>
+                      </div>
                     @endforeach
                   </div>
                 </div>
-                <form action="{{route('cart.store')}}" method="POST">
+
                     @csrf
                     <div class="quantity-area d-flex">
                     <h4>Quantity</h4>
@@ -74,7 +78,7 @@
                     </div>
                     <div class="button-area d-flex justify-content-start">
                         <button type="submit" class="add-cart">Add to cart</button>
-                        <button class="buy-now">buy now</button>
+                        {{-- <button class="buy-now">buy now</button> --}}
                     </div>
                 </form>
 
@@ -92,6 +96,7 @@
             {!! $productShow->description !!}
           </div>
         </div>
+
 {{--
         <div class="comon-section product-rating">
           <div class="heading-every-section d-flex justify-content-between">
