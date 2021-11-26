@@ -38,10 +38,15 @@ Route::get('/cart/destroy/{rowId}', [FrontendCartController::class, 'cartDestroy
 
 // Login & Register
 Route::get('/customer/login', [FrontendAuthController::class, 'login'])->name('customer.login');
+Route::post('/customer/attempt', [FrontendAuthController::class, 'attemptLogin'])->name('customer.attempt');
 Route::get('/customer/register', [FrontendAuthController::class, 'register'])->name('customer.register');
+Route::post('/customer/store', [FrontendAuthController::class, 'registerStore'])->name('customer.store');
+Route::post('/logout-front', [FrontendAuthController::class, 'logoutPerform'])->name('customer.logout');
+
+// Customer Profile
+Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');
 
 Auth::routes();
-Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
     Route::group(['middleware' => ['check_permission']], function () {
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');

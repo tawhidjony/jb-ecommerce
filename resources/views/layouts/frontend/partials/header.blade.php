@@ -29,18 +29,20 @@
                   <span>Help</span>
                 </div>
               </a>
-              <a href="{{route('customer.register')}}">
-                <div class="link-area d-flex">
-                  <i class="fas fa-user-plus"></i>
-                  <span class="strong">Sing Up</span>
-                </div>
-              </a>
-              <a href="{{route('customer.login')}}">
-                <div class="link-area d-flex">
-                  <i class="fas fa-sign-in-alt"></i>
-                  <span class="strong">Login</span>
-                </div>
-              </a>
+                @guest
+                    <a href="{{route('customer.register')}}">
+                        <div class="link-area d-flex">
+                        <i class="fas fa-user-plus"></i>
+                        <span class="strong">Sing Up</span>
+                        </div>
+                    </a>
+                    <a href="{{route('customer.login')}}">
+                        <div class="link-area d-flex">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="strong">Login</span>
+                        </div>
+                    </a>
+                @endguest
             </div>
           </div>
           <!-- login sin up area end -->
@@ -100,7 +102,9 @@
             <!--user-profile-area start  -->
             <div class="user-profile-area">
 
-              <div class="user-area d-flex">
+            @guest
+            @else
+            <div class="user-area d-flex">
                 <div class="profile-pic">
                   <img src="{{URL::to('frontend/assets/images/my_picture_squre.jpg')}}" alt="">
                 </div>
@@ -111,11 +115,19 @@
                     <a href="{{route('customer.index')}}">Account</a>
                     <a href="purchase-detalis-user-account.html">Purchase</a>
                     <a href="shoping-cart-user-account.html">Shopping Cart</a>
-                    <a href="logout-index.html">Logout</a>
+                    <a href="{{ route('customer.logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('customer-logout-form').submit()"
+                    >Logout</a>
+                    <form id="customer-logout-form"  action="{{ route('customer.logout') }}" method="POST" class="d-none">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 ml-2 ml-8 text-white bg-indigo-600 rounded" >Logout</button>
+                    </form>
                   </div>
                 </div>
 
               </div>
+            @endguest
 
 
             </div>

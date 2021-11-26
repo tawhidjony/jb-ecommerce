@@ -7,38 +7,39 @@
         <div class="col-8 mr-auto ml-auto">
           <div class="main-area sign-area">
             <h4>Sign Up</h4>
-            <form>
+            <form action="{{route('customer.store')}}" method="POST">
+                @csrf
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="User-id">User Id</label>
-                  <input type="text" class="form-control" id="User-id" placeholder="Ex: jbalam">
+                  <label for="User-id">User Name</label>
+                  <input type="text" name="name" class="form-control" id="User-id" placeholder="Ex: jbalam">
                   <label for="phone-number">Phone Number</label>
-                  <input type="number" class="form-control" id="phone-number" placeholder="Ex: +60123456789">
+                  <input type="number" name="phone" class="form-control" id="phone-number" placeholder="Ex: +60123456789">
                   <label for="inputPassword4">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                  <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="Password">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="fullName">Full Name</label>
-                  <input type="email" class="form-control" id="fullName" placeholder="EX: Alam Jahangir">
+                  <input type="email" name="full_name" class="form-control" id="fullName" placeholder="EX: Alam Jahangir">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="something@something.com">
+                  <input type="email" name="email" class="form-control" id="email" placeholder="something@something.com">
                   <label for="inputPassword4">Retype Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                  <input type="password" name="password_confirmation" class="form-control" id="inputPassword4" placeholder="Password">
                 </div>
               </div>
               <div class="form-row address-area-2">
                 <div class="form-group col-md-6">
                   <label for="inputAddress">Address</label>
-                  <textarea class="form-control" id="inputAddress" rows="3" placeholder=" 221B Baker Street"></textarea>
+                  <textarea class="form-control"  name="address" id="inputAddress" rows="3" placeholder=" 221B Baker Street"></textarea>
                   <label for="inputPostcode">Postcode</label>
-                  <input type="number" class="form-control" id="inputPostcode" placeholder="Ex: 47301">
+                  <input type="number" name="post_code" class="form-control" id="inputPostcode" placeholder="Ex: 47301">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="inputState">State</label>
-                  <input type="text" class="form-control" id="inputState" placeholder="EX: Selangor">
+                  <input type="text" name="state" class="form-control" id="inputState" placeholder="EX: Selangor">
                   <label for="inputCity">City</label>
 
-                  <input type="text" class="form-control" id="inputCity" placeholder="EX: Petaling Jaya">
+                  <input type="text" name="city" class="form-control" id="inputCity" placeholder="EX: Petaling Jaya">
 
 
                   <div class="custom-control custom-checkbox">

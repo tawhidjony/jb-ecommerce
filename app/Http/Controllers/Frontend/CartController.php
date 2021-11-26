@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Shipping;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
 
     public function cartIndex(){
+        $shippingAddress = Shipping::where('user_id', Auth::user()->id)->where('status', 1)->first();
         $get_cart_item = Cart::content();
-        return view('frontend.cart.index', compact('get_cart_item'));
+        return view('frontend.cart.index', compact('get_cart_item', 'shippingAddress'));
     }
 
     public function addItemToCart(Request $request)

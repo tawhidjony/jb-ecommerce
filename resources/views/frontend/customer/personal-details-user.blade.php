@@ -131,163 +131,90 @@
                 </div>
                 <!-- ------------------------------------------------------------------------- -->
                 <!--single  address start -->
-                <div class="address  d-flex">
-                  <div class="defult-tag ">
-                    <span class="actived">Default</span>
-                  </div>
-                  <div class="display-address">
-                    <div class="form-group">
-                      <label for="full-name">Full Name</label>
-                      <span class="full-name">Alam Jahangir</span>
-                    </div>
-                    <div class="form-group">
-                      <label for="phone">Phone</label>
-                      <span class="user-name">+60234242342</span>
-                    </div>
-                    <div class="form-group">
-                      <label for="address">Address</label>
-                      <span class="address-line">1, Jalan SS 7/17, Ss 7, 47301 Petaling Jaya, Selangor</span>
-                    </div>
-                  </div>
-                  <div class="oparation-area d-flex">
-                    <div class="edit"><a href="#" data-toggle="modal" data-target="#editAddress">Edit</a></div>
-                    <div class="delete"><a href="#">Delete</a></div>
-                    <div class="set-up"> <a href="#">Set As Default</a></div>
-                  </div>
-                  <!-- edit address model start -->
-                  <div class="modal fade add-address" id="editAddress" tabindex="-1" role="dialog"
-                    aria-labelledby="editAddressTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-edit"></i>Edit Address
-                          </h5>
-                        </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <label for="exampleInputName">Name</label>
-                              <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
-                                placeholder="EX: Alam Jahangir">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPhoneNumber">Phone Number</label>
-                              <input type="number" class="form-control" id="exampleInputPhoneNumber"
-                                aria-describedby="emailHelp" placeholder="Ex: +60131232143">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleFormControlAddress">Address</label>
-                              <textarea class="form-control" id="exampleFormControlAddress" rows="2"></textarea>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputState">State</label>
-                              <input type="text" class="form-control" id="exampleInputState"
-                                aria-describedby="emailHelp" placeholder="EX: Selangor">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputCity">City</label>
-                              <input type="text" class="form-control" id="exampleInputCity" aria-describedby="emailHelp"
-                                placeholder="EX: Petaling Jaya">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPostcode">Postcode</label>
-                              <input type="number" class="form-control" id="exampleInputPostcode"
-                                aria-describedby="emailHelp" placeholder="Ex: 47301">
-                            </div>
+                @forelse ($shipping as $shippingItem)
+                    <div class="address  d-flex">
+                    <div class="defult-tag ">
+                        @if ($shippingItem->status == 1)
+                            <span class="">Default  </span>
+                        @else
 
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="primary-btn close-btn" data-dismiss="modal">Close</button>
-                          <button type="button" class="primary-btn ">Save Changes</button>
+                        @endif
+                    </div>
+                    <div class="display-address">
+                      <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <span class="full-name">Alam Jahangir</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <span class="user-name">+60234242342</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="address">Address</label>
+                        <span class="address-line">{{$shippingItem->address}}</span>
+                      </div>
+                    </div>
+                    <div class="oparation-area d-flex">
+                      <div class="edit"><a href="#" data-toggle="modal" data-target="#editAddress">Edit</a></div>
+                      <div class="delete"><a href="#">Delete</a></div>
+                      <div class="set-up"> <a href="#">Set As Default</a></div>
+                    </div>
+
+                    <!-- edit address model start -->
+                    <div class="modal fade add-address" id="editAddress" tabindex="-1" role="dialog"
+                      aria-labelledby="editAddressTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-edit"></i>Edit Address
+                            </h5>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label for="exampleInputName">Name</label>
+                                <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+                                  placeholder="EX: Alam Jahangir">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputPhoneNumber">Phone Number</label>
+                                <input type="number" class="form-control" id="exampleInputPhoneNumber"
+                                  aria-describedby="emailHelp" placeholder="Ex: +60131232143">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlAddress">Address</label>
+                                <textarea class="form-control" id="exampleFormControlAddress" rows="2"></textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputState">State</label>
+                                <input type="text" class="form-control" id="exampleInputState"
+                                  aria-describedby="emailHelp" placeholder="EX: Selangor">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputCity">City</label>
+                                <input type="text" class="form-control" id="exampleInputCity" aria-describedby="emailHelp"
+                                  placeholder="EX: Petaling Jaya">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputPostcode">Postcode</label>
+                                <input type="number" class="form-control" id="exampleInputPostcode"
+                                  aria-describedby="emailHelp" placeholder="Ex: 47301">
+                              </div>
+
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="primary-btn close-btn" data-dismiss="modal">Close</button>
+                            <button type="button" class="primary-btn ">Save Changes</button>
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <!-- edit address model end -->
                   </div>
-                  <!-- edit address model end -->
-                </div>
-                <!--single  address end -->
+                @empty
 
-
-                <!--single  address start -->
-                <div class="address  d-flex">
-                  <div class="defult-tag ">
-                    <span class="not-actived">Default</span>
-                  </div>
-                  <div class="display-address">
-                    <div class="form-group">
-                      <label for="full-name">Full Name</label>
-                      <span class="full-name">Alam Jahangir</span>
-                    </div>
-                    <div class="form-group">
-                      <label for="phone">Phone</label>
-                      <span class="user-name">+60234242342</span>
-                    </div>
-                    <div class="form-group">
-                      <label for="address">Address</label>
-                      <span class="address-line">1, Jalan SS 7/17, Ss 7, 47301 Petaling Jaya, Selangor</span>
-                    </div>
-                  </div>
-                  <div class="oparation-area d-flex">
-                    <div class="edit"><a href="#" data-toggle="modal" data-target="#editAddress2">Edit</a></div>
-                    <div class="delete"><a href="#">Delete</a></div>
-                    <div class="set-up"> <a href="#">Set As Default</a></div>
-                  </div>
-
-                  <!-- edit address model start -->
-                  <div class="modal fade add-address" id="editAddress2" tabindex="-1" role="dialog"
-                    aria-labelledby="editAddress2Title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-edit"></i>Edit Address-2
-                          </h5>
-                        </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <label for="exampleInputName">Name</label>
-                              <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
-                                placeholder="EX: Alam Jahangir">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPhoneNumber">Phone Number</label>
-                              <input type="number" class="form-control" id="exampleInputPhoneNumber"
-                                aria-describedby="emailHelp" placeholder="Ex: +60131232143">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleFormControlAddress">Address</label>
-                              <textarea class="form-control" id="exampleFormControlAddress" rows="2"></textarea>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputState">State</label>
-                              <input type="text" class="form-control" id="exampleInputState"
-                                aria-describedby="emailHelp" placeholder="EX: Selangor">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputCity">City</label>
-                              <input type="text" class="form-control" id="exampleInputCity" aria-describedby="emailHelp"
-                                placeholder="EX: Petaling Jaya">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPostcode">Postcode</label>
-                              <input type="number" class="form-control" id="exampleInputPostcode"
-                                aria-describedby="emailHelp" placeholder="Ex: 47301">
-                            </div>
-
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="primary-btn close-btn" data-dismiss="modal">Close</button>
-                          <button type="button" class="primary-btn ">Save Changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- edit address model end -->
-                </div>
-                <!--single  address start -->
+                @endforelse
                 <!-- ------------------------------------------------------------------------- -->
 
                 <!-- add address modal start -->

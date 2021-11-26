@@ -96,13 +96,13 @@
                             <div class="shiping-address-delivary">
                                 <h3>Delivery Address</h3>
                                 <div class="address-contain">
-                                    <h4 class="user-name">Alam Jahangir</h4>
-                                    <span class="user-phone-number">+6034520559</span>
-                                    <span class="user-address">Block- B, Floor- 6, Room- 603, Tiara Kelana Condominium, 1,
-                                        Jalan SS 7/17,
-                                        Ss 7,, Petaling Jaya, 47301, Selangor</span>
-                                    <a href="#" class="change-address" data-toggle="modal"
-                                        data-target="#changeAddress">Change</a>
+                                    <h4 class="user-name">{{Auth::user()->name}}</h4>
+                                    <span class="user-phone-number">{{Auth::user()->phone}}</span>
+                                    <span class="user-address">
+                                       {{$shippingAddress->address}},  {{$shippingAddress->state}},  {{$shippingAddress->post_code}}, {{$shippingAddress->city}}
+                                    </span>
+
+                                    <a href="{{route('customer.index')}}" class="change-address" >Change</a>
                                 </div>
                             </div>
                             <div class="payment-method-check was-validated">
