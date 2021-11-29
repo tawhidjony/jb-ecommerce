@@ -13,7 +13,14 @@ class CartController extends Controller
 {
 
     public function cartIndex(){
-        $shippingAddress = Shipping::where('user_id', Auth::user()->id)->where('status', 1)->first();
+
+        $shippingAddress = "";
+        if(Auth::check()){
+            $shippingAddress = Shipping::where('user_id', Auth::user()->id)->where('status', 1)->first();
+        }else{
+            $shippingAddress = "Please Login First";
+        }
+
         $get_cart_item = Cart::content();
         return view('frontend.cart.index', compact('get_cart_item', 'shippingAddress'));
     }

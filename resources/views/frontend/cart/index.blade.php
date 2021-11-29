@@ -92,14 +92,22 @@
                     <!-- check out oparation area start -->
                     <div class="col-4">
                         <div class="check-out-area">
+                            <form action="">
                             <h1>PLACE ORDER</h1>
                             <div class="shiping-address-delivary">
                                 <h3>Delivery Address</h3>
                                 <div class="address-contain">
-                                    <h4 class="user-name">{{Auth::user()->name}}</h4>
-                                    <span class="user-phone-number">{{Auth::user()->phone}}</span>
+                                    {{-- <h4 class="user-name">{{Auth::user()->name}}</h4>
+                                    <span class="user-phone-number">{{Auth::user()->phone}}</span> --}}
                                     <span class="user-address">
-                                       {{$shippingAddress->address}},  {{$shippingAddress->state}},  {{$shippingAddress->post_code}}, {{$shippingAddress->city}}
+                                        @if($shippingAddress->status == 1)
+                                            {{$shippingAddress->address}},
+                                            {{$shippingAddress->state}},
+                                            {{$shippingAddress->post_code}},
+                                            {{$shippingAddress->city}}
+                                        @else
+                                            {{$shippingAddress}}
+                                        @endif
                                     </span>
 
                                     <a href="{{route('customer.index')}}" class="change-address" >Change</a>
@@ -144,8 +152,8 @@
                                     <h3>BDT<span class="subtotal">{{$grand_total}}</span></h3>
                                 </div>
                             </div>
-                            <a href="purchase-detalis-user-account.html" class="checkout-button">CHECKOUT<i
-                                    class="fas fa-angle-double-right"></i></a>
+                            <button class="checkout-button d-inline-block">CHECKOUT<i class="fas fa-angle-double-right"></i></button>
+                        </form>
                         </div>
                     </div>
                     <!-- check out oparation area end -->

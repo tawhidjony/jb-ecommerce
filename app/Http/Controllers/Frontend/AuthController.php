@@ -52,12 +52,13 @@ class AuthController extends Controller
       ]);
 
         $shipping = new Shipping();
-        $shipping->customer_id = $user->id;
         $shipping->uuid = Str::uuid();
+        $shipping->user_id = $user->id;
         $shipping->address = $data['address'];
         $shipping->state = $data['state'];
         $shipping->post_code = $data['post_code'];
         $shipping->city = $data['city'];
+        $shipping->status = 1;
         $shipping->save();
 
         return $user;
