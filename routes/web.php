@@ -46,8 +46,10 @@ Route::post('/logout-front', [FrontendAuthController::class, 'logoutPerform'])->
 // Customer Profile
 Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');
 
+
 Auth::routes();
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
+    Route::post('/cart/store', [FrontendCartController::class, 'cartItemStore'])->name('cart.item.store');
     Route::group(['middleware' => ['check_permission']], function () {
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('/category', CategoryController::class);

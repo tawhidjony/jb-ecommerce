@@ -92,21 +92,21 @@
                     <!-- check out oparation area start -->
                     <div class="col-4">
                         <div class="check-out-area">
-                            <form action="">
+                        <form action="{{route('cart.item.store')}}" method="POST">
+                            @csrf
                             <h1>PLACE ORDER</h1>
                             <div class="shiping-address-delivary">
                                 <h3>Delivery Address</h3>
                                 <div class="address-contain">
-                                    {{-- <h4 class="user-name">{{Auth::user()->name}}</h4>
-                                    <span class="user-phone-number">{{Auth::user()->phone}}</span> --}}
                                     <span class="user-address">
-                                        @if($shippingAddress->status == 1)
+                                        @if(!$shippingAddress == "")
                                             {{$shippingAddress->address}},
                                             {{$shippingAddress->state}},
                                             {{$shippingAddress->post_code}},
                                             {{$shippingAddress->city}}
+                                            <input type="hidden" name="shipping_id" value="{{$shippingAddress->id}}">
                                         @else
-                                            {{$shippingAddress}}
+                                            <p>Login first</p>
                                         @endif
                                     </span>
 
@@ -116,7 +116,7 @@
                             <div class="payment-method-check was-validated">
                                 <h4>Select Payment Method</h4>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="payment" value="cash on delevery" class="custom-control-input">
+                                    <input type="radio" id="customRadio1" name="payment" value="cash on delevery" class="custom-control-input" required>
                                     <label class="custom-control-label" for="customRadio1">
                                         <div class="payment-option">
                                             <span class="option">Cash On Delivery</span>
@@ -125,7 +125,7 @@
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio paypal-online">
-                                    <input type="radio" id="customRadio2" name="payment" value="bank" class="custom-control-input">
+                                    <input type="radio" id="customRadio2" name="payment" value="bank" class="custom-control-input" required>
                                     <label class="custom-control-label" for="customRadio2">
                                         <div class="payment-option">
                                             <span class="option">
@@ -152,7 +152,8 @@
                                     <h3>BDT<span class="subtotal">{{$grand_total}}</span></h3>
                                 </div>
                             </div>
-                            <button class="checkout-button d-inline-block">CHECKOUT<i class="fas fa-angle-double-right"></i></button>
+
+                            <button type="submit" class="checkout-button d-inline-block">CHECKOUT<i class="fas fa-angle-double-right"></i></button>
                         </form>
                         </div>
                     </div>
