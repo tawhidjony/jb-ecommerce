@@ -5,22 +5,19 @@
         <div class="col-md-6">
             <div class="card radius-15" style="height: 235px">
                 <div class="card-header">User Information</div>
-                {{-- <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Name: {{$orderShow->user->name}}</li>
-                    <li class="list-group-item">Email: {{$orderShow->user->email}}</li>
-                    <li class="list-group-item">Phone: {{$orderShow->user->phone}}</li>
-                </ul> --}}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: {{$order->user->name}}</li>
+                    <li class="list-group-item">Email: {{$order->user->email}}</li>
+                    <li class="list-group-item">Phone: {{$order->user->phone}}</li>
+                </ul>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card radius-15" style="height: 235px">
                 <div class="card-header">Shipping Address</div>
-                {{-- <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Name: {{$orderShow->shipping->name}}</li>
-                    <li class="list-group-item">Email: {{$orderShow->shipping->email}}</li>
-                    <li class="list-group-item">Phone: {{$orderShow->shipping->phone}}</li>
-                    <li class="list-group-item">Address: {{$orderShow->shipping->address}}</li>
-                </ul> --}}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ $order->shipping->address}} {{ $order->shipping->state }} {{ $order->shipping->post_code }} - {{ $order->shipping->city }}</li>
+                </ul>
             </div>
         </div>
 
@@ -29,12 +26,12 @@
                 <div class="p-2 d-flex justify-content-between align-items-center">
                     <h3>Order Details</h3>
                     <div class="d-flex">
-                        <a href="" class="float-right mr-2 btn btn-outline-primary" >{{-- {{$orderShow->status !== 1 ? 'Pending':'Delivery Success'}} --}}</a>
-                       {{--  <form action="{{route('order.status')}}" method="POST">
+                        <a href="" class="float-right mr-2 btn btn-outline-primary" >{{$order->status !== 1 ? 'Pending':'Delivery Success'}}</a>
+                        <form action="{{route('order.status')}}" method="POST">
                             @csrf
-                            <input type="hidden" name="id" value="{{$orderShow->id}}">
-                            <button type="submit" {{$orderShow->status === 1 ? 'disabled':""}} class="float-right btn btn-primary" >Aprove</button>
-                        </form> --}}
+                            <input type="hidden" name="id" value="{{$order->id}}">
+                            <button type="submit" {{$order->status === 1 ? 'disabled':""}} class="float-right btn btn-primary" >Aprove</button>
+                        </form>
                     </div>
                 </div>
                     <table class="table mb-0" >
@@ -42,30 +39,32 @@
                             <tr>
                                 <th>Product Image</th>
                                 <th>Product Name</th>
+                                <th>Product Variation</th>
                                 <th>Product Price</th>
                                 <th>Product Quantity</th>
                                 <th>Total Price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($orderShow->orderDetails as $item)
+                            @foreach($order->order_details as $item)
                                 <tr>
                                     <td>
                                         <div class="bg-transparent border product-img">
-                                            <img src="{{URL::to($item->product->photo)}}" width="35" alt="">
+                                            <img src="{{URL::to($item->product[0]['thumbnail'])}}" width="35" alt="">
                                         </div>
                                     </td>
-                                    <td>{{$item->product->title}}</td>
-                                    <td>{{$item->price}}</td>
+                                    <td>{{$item->product[0]['name']}}</td>
+                                    <td>{{$item->variation}}</td>
+                                    <td>{{$item->product[0]['price']}} BDT</td>
                                     <td>{{$item->qty}}</td>
-                                    <td>{{$item->qty * $item->price}}</td>
+                                    <td>{{$item->subtotal}} BDT</td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                {{-- <th colspan="4">Total Price</th>
-                                <th>{{$orderShow->orderDetails->sum('subtotal')}}</th> --}}
+                                <th colspan="5">Total Price</th>
+                                <th>{{$order->order_details->sum('subtotal')}} BDT</th>
                             </tr>
                         </tfoot>
                     </table>

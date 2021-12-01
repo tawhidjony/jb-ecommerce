@@ -48,6 +48,7 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::with(['user', 'shipping', 'payment', 'order_details.product'])->first();
+        // return $order;
         return view('backend.order.show', compact('order'));
     }
 
@@ -83,5 +84,13 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function orderStatus(Request $request)
+    {
+        $orderStatus = Order::find($request->id);
+        $orderStatus->status = 1;
+        $orderStatus->update();
+        return redirect()->back();
     }
 }
