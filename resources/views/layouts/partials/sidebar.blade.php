@@ -21,7 +21,13 @@
             </a>
         </li>
         @endif
-
+        <li>
+            <a href="{{route('slider.index')}}" >
+                <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
+                </div>
+                <div class="menu-title">Slider</div>
+            </a>
+        </li>
         <li>
             <a href="{{route('category.index')}}" >
                 <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
@@ -38,11 +44,12 @@
             </a>
         </li>
 
+
         <li>
-            <a href="{{route('slider.index')}}" >
+            <a href="{{route('order.index')}}" >
                 <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
                 </div>
-                <div class="menu-title">Slider</div>
+                <div class="menu-title">Order</div>
             </a>
         </li>
 

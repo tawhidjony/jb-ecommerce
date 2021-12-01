@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\CartController as FrontendCartController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SliderController;
@@ -55,6 +56,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
         Route::resource('/category', CategoryController::class);
         Route::resource('/slider', SliderController::class);
         Route::resource('/product', ProductController::class);
+        Route::resource('/order', OrderController::class);
         Route::resource('/users', UserController::class);
         Route::resource('/roles', RoleController::class);
     });
