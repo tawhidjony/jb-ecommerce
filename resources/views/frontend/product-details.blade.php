@@ -55,10 +55,10 @@
                 <div class="product-variation d-flex">
                   <h4>Variation</h4>
                   <div class="variation-count">
-                    @foreach ($productShow->variation as $key=>$variation)
+                    @foreach ($productShow->variation as $key => $variation)
                      <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio-{{ $key+1}}" name="variation" value="{{$variation}}" class="custom-control-input" required>
-                        <label class="custom-control-label" for="customRadio-{{ $key+1}}">{{$variation}}</label>
+                        <input type="radio" id="customRadio-{{ $key+1}}" name="variation" value="{{$variation}}" class="custom-control-input "  {{$key == 0 ? 'checked':""}} required>
+                        <label class="custom-control-label " for="customRadio-{{ $key+1}}">{{$variation}}</label>
                       </div>
                     @endforeach
                   </div>

@@ -90,7 +90,7 @@ class CartController extends Controller
                       }
                       DB::commit();
                       Cart::destroy();
-                      return redirect()->route('cart.index')->withSuccess('Order Successfully');
+                      return redirect()->route('purchase.details')->withSuccess('Order Successfully');
                   }
               }
         } catch (\Exception $e) {

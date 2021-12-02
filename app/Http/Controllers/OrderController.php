@@ -47,8 +47,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::with(['user', 'shipping', 'payment', 'order_details.product'])->first();
-        // return $order;
+        $order = Order::with(['user', 'shipping', 'payment', 'order_details.product'])->find($id);
         return view('backend.order.show', compact('order'));
     }
 

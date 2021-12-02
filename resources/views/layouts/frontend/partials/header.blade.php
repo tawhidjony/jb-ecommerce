@@ -80,7 +80,7 @@
                         <a href="shoping-cart-user-account.html">
                             <li>
                                 <div class="product-details d-flex justify-content-between">
-                                    <img src="{{URL::to('frontend/assets/images/product-img/product-1/po-2.png')}}" alt="">
+                                    <img src="{{URL::to($items->options->photo)}}" alt="">
                                     <div class="product-name">
                                     <h2>{{$items->name}}</h2>
                                     </div>
@@ -106,15 +106,15 @@
             @else
             <div class="user-area d-flex">
                 <div class="profile-pic">
-                  <img src="{{URL::to('frontend/assets/images/my_picture_squre.jpg')}}" alt="">
+                  <img src="{{URL::to(Auth::user()->photo ? Auth::user()->photo : 'frontend/assets/images/my_picture_squre.png')}}" alt="">
                 </div>
                 <div class="user-name">
-                  <span>Jahangir Alam</span>
+                  <span>{{Auth::user()->full_name}}</span>
                   <div class="user-account-area">
 
                     <a href="{{route('customer.index')}}">Account</a>
-                    <a href="purchase-detalis-user-account.html">Purchase</a>
-                    <a href="shoping-cart-user-account.html">Shopping Cart</a>
+                    <a href="{{route('purchase.details')}}">Purchase</a>
+                    <a href="{{route('cart.index')}}">Shopping Cart</a>
                     <a href="{{ route('customer.logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('customer-logout-form').submit()"

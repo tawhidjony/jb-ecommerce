@@ -17,6 +17,7 @@ class CreateOrderDetailsTable extends Migration
             $table->id();
             $table->bigInteger('order_id');
             $table->bigInteger('product_id');
+            $table->string('variation');
             $table->string('qty');
             $table->string('subtotal');
             $table->timestamps();

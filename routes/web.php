@@ -46,6 +46,8 @@ Route::post('/logout-front', [FrontendAuthController::class, 'logoutPerform'])->
 
 // Customer Profile
 Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');
+Route::get('/purchase-details-user', [FrontendCustomerController::class, 'personalDetails'])->name('purchase.details');
+Route::get('/single-purchase-details/{id}', [FrontendCustomerController::class, 'singlePurchaseDetails'])->name('single.purchase.details');
 
 
 Auth::routes();
