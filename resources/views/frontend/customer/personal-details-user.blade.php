@@ -5,40 +5,7 @@
     <div class="account-detalis">
       <div class="container">
         <div class="row">
-          <!-- nevigration menu area start -->
-          <div class="col-3 ">
-            <div class="left-side-area">
-              <div class="profile-pic-area">
-                <img src="assets/images/my_picture_squre.jpg" alt="">
-                <span class="user-name">Alam Jahangir</span>
-                <a href="#" class="change-pic">Change Image</a>
-              </div>
-              <div class="side-menu-area">
-                <a href="#" class="active">
-                  <div class="v-list d-flex"><i class="fas fa-user"></i>
-                    <h4>My Account Deatlis</h4>
-                  </div>
-                </a>
-                <a href="purchase-detalis-user-account.html">
-                  <div class="v-list d-flex"><i class="fas fa-store"></i>
-                    <h4>My Purchase</h4>
-                  </div>
-                </a>
-                <a href="shoping-cart-user-account.html">
-                  <div class="v-list d-flex"><i class="fas fa-shopping-cart"></i>
-                    <h4>My Shoping Cart</h4>
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="v-list d-flex"><i class="fas fa-bell"></i>
-                    <h4>Notifications</h4>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- nevigration menu area end -->
-
+            @include('frontend.customer.partial.user-profile-nav')
 
           <div class="col-9">
             <div class="right-side-area">
@@ -52,22 +19,22 @@
                 <form>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
-                    <span class="user-name">jbalam</span>
+                    <span class="user-name">{{$user->name}}</span>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                      placeholder="EX: Alam Jahangir">
+                      placeholder="EX: Alam Jahangir" name="full_name" value="{{$user->full_name}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                      placeholder="Enter email">
+                      placeholder="Enter email" name="email" value="{{$user->email}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Phone Number</label>
                     <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                      placeholder="Ex: +60131232143">
+                      placeholder="Ex: +60131232143" name="phone" value="{{$user->phone}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputGender">Gender

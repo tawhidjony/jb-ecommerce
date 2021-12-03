@@ -26,11 +26,25 @@
                 <div class="p-2 d-flex justify-content-between align-items-center">
                     <h3>Order Details</h3>
                     <div class="d-flex">
-                        <a href="" class="float-right mr-2 btn btn-outline-primary" >{{$order->status !== 1 ? 'Pending':'Delivery Success'}}</a>
+                        <a href="" class="float-right mr-2 btn btn-outline-primary" >
+                            @if ($order->order_status === 1)
+                                Order Completed
+                            @elseif ($order->shipping_status === 1)
+                                Processing Shipping
+                            @else
+                                Order Pending
+                            @endif
+                        </a>
+                        <form action="{{route('shipping.status')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$order->id}}">
+                            <button type="submit" {{$order->shipping_status === 1 ? 'disabled':""}} class="float-right btn btn-primary mr-2" >Shipping</button>
+                        </form>
+
                         <form action="{{route('order.status')}}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{$order->id}}">
-                            <button type="submit" {{$order->status === 1 ? 'disabled':""}} class="float-right btn btn-primary" >Aprove</button>
+                            <button type="submit" {{$order->order_status === 1 ? 'disabled':""}} class="float-right btn btn-primary" >Order Complete</button>
                         </form>
                     </div>
                 </div>

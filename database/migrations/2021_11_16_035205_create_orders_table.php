@@ -19,7 +19,9 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('shipping_id');
             $table->bigInteger('payment_id');
             $table->string('order_total');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
+            $table->boolean('shipping_status')->default(0);
+            $table->boolean('order_status')->default(0);
             $table->timestamps();
         });
     }

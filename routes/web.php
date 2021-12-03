@@ -59,6 +59,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
         Route::resource('/slider', SliderController::class);
         Route::resource('/product', ProductController::class);
         Route::resource('/order', OrderController::class);
+        Route::post('/shipping/status', [OrderController::class, 'shippingStatus'])->name('shipping.status');
         Route::post('/order/status', [OrderController::class, 'orderStatus'])->name('order.status');
         Route::resource('/users', UserController::class);
         Route::resource('/roles', RoleController::class);

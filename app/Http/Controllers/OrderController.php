@@ -85,10 +85,17 @@ class OrderController extends Controller
         //
     }
 
+    public function shippingStatus(Request $request)
+    {
+        $orderStatus = Order::find($request->id);
+        $orderStatus->shipping_status = 1;
+        $orderStatus->update();
+        return redirect()->back();
+    }
     public function orderStatus(Request $request)
     {
         $orderStatus = Order::find($request->id);
-        $orderStatus->status = 1;
+        $orderStatus->order_status = 1;
         $orderStatus->update();
         return redirect()->back();
     }

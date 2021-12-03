@@ -5,42 +5,7 @@
         <div class="account-detalis">
             <div class="container">
                 <div class="row">
-                    <!-- nevigration menu area start -->
-                    <div class="col-3 ">
-                        <div class="left-side-area purchase-page">
-                            <div class="profile-pic-area">
-                                <img src="assets/images/my_picture_squre.jpg" alt="">
-                                <span class="user-name">Alam Jahangir</span>
-
-                            </div>
-                            <div class="side-menu-area">
-                                <a href="personal-detalis-user-account.html">
-                                    <div class="v-list d-flex"><i class="fas fa-user"></i>
-                                        <h4>My Account Deatlis</h4>
-                                    </div>
-                                </a>
-                                <a href="purchase-detalis-user-account.html" class="active">
-                                    <div class="v-list d-flex "><i class="fas fa-store"></i>
-                                        <h4>My Purchase</h4>
-                                    </div>
-                                </a>
-                                <a href="shoping-cart-user-account.html">
-                                    <div class="v-list d-flex"><i class="fas fa-shopping-cart"></i>
-                                        <h4>My Shopping Cart</h4>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="v-list d-flex"><i class="fas fa-bell"></i>
-                                        <h4>Notifications</h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- nevigration menu area end -->
-
-
+                    @include('frontend.customer.partial.user-profile-nav')
                     <div class="col-9">
                         <div class="right-side-area">
                             <!--product purchase area start -->
@@ -79,7 +44,7 @@
                                                 <div class="product-price-detali d-flex">
                                                     <h4>Total Summary</h4>
                                                     <div class="sub-total d-flex justify-content-between">
-                                                        <h5>Subtotal<span class="item-count">(1)</span>Item</h5>
+                                                        <h5>Subtotal<span class="item-count">({{$item->order_details->count()}})</span>Item</h5>
                                                         <h5>BDT <span class="item-price">{{$item->order_total}}</span></h5>
                                                     </div>
                                                     <div class="shipping-fee d-flex justify-content-between">
@@ -129,11 +94,14 @@
                                         </div>
                                     </div>
                                 @empty
-
+                                    <div>
+                                        <h2>Items Not Available</h2>
+                                    </div>
                                 @endforelse
 
 
                             </div>
+                            {{-- {{ $purchaseOrder->links() }} --}}
                             <!-- product purchase area end -->
                         </div>
                     </div>

@@ -5,41 +5,7 @@
     <div class="account-detalis">
       <div class="container">
         <div class="row">
-          <!-- nevigration menu area start -->
-          <div class="col-3 ">
-            <div class="left-side-area purchase-page">
-              <div class="profile-pic-area">
-                <img src="assets/images/my_picture_squre.jpg" alt="">
-                <span class="user-name">Alam Jahangir</span>
-
-              </div>
-              <div class="side-menu-area">
-                <a href="personal-detalis-user-account.html">
-                  <div class="v-list d-flex"><i class="fas fa-user"></i>
-                    <h4>My Account Deatlis</h4>
-                  </div>
-                </a>
-                <a href="purchase-detalis-user-account.html" class="active">
-                  <div class="v-list d-flex"><i class="fas fa-store"></i>
-                    <h4>My Purchase</h4>
-                  </div>
-                </a>
-                <a href="shoping-cart-user-account.html">
-                  <div class="v-list d-flex"><i class="fas fa-shopping-cart"></i>
-                    <h4>My Shopping Cart</h4>
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="v-list d-flex"><i class="fas fa-bell"></i>
-                    <h4>Notifications</h4>
-                  </div>
-                </a>
-              </div>
-            </div>
-
-          </div>
-          <!-- nevigration menu area end -->
-
+            @include('frontend.customer.partial.user-profile-nav')
           <!--single product purchase area start -->
           <div class="col-9">
             <div class="right-side-area">
@@ -65,7 +31,7 @@
                     <div class="product-price-detali d-flex">
                       <h4>Total Summary</h4>
                       <div class="sub-total d-flex justify-content-between">
-                        <h5>Subtotal<span class="item-count">(1)</span>Item</h5>
+                        <h5>Subtotal<span class="item-count">({{$purchaseOrderDetails->order_details->count()}})</span>Item</h5>
                         <h5>BDT <span class="item-price">{{$purchaseOrderDetails->order_total}}</span></h5>
                       </div>
                       <div class="shipping-fee d-flex justify-content-between">
@@ -96,27 +62,31 @@
                   <!-- delivary summary start -->
                   <div class="delivary-summary">
                     <div class="p-tracking-area d-flex justify-content-around">
-                      <div class="actived comon-div order-place">
+
+                      <div class="comon-div order-place {{$purchaseOrderDetails->status === 1 ? "actived":""}}">
                         <div class="icon-area">
                           <i class="fas fa-luggage-cart"></i>
                         </div>
                         <h5>Order Placed</h5>
-                        <span class="date-time">26-5-2021 5:10</span>
+                        {{-- <span class="date-time">26-5-2021 5:10</span> --}}
                       </div>
-                      <div class="comon-div shiping-procesing">
+
+                      <div class="comon-div shiping-procesing {{$purchaseOrderDetails->shipping_status === 1 ? "actived":""}} ">
                         <div class="icon-area">
                           <i class="fas fa-caravan"></i>
                         </div>
                         <h5>Shiping Procesing</h5>
-                        <span class="date-time">26-5-2021 5:10</span>
+                        {{-- <span class="date-time">26-5-2021 5:10</span> --}}
                       </div>
-                      <div class="comon-div order-completed">
+
+                      <div class="comon-div order-completed {{$purchaseOrderDetails->order_status === 1 ? "actived":""}}">
                         <div class="icon-area">
                           <i class="fas fa-download"></i>
                         </div>
                         <h5>Order Completed</h5>
-                        <span class="date-time">26-5-2021 5:10</span>
+                        {{-- <span class="date-time">{{$purchaseOrderDetails->updated_at}}</span> --}}
                       </div>
+
                     </div>
                   </div>
 
@@ -190,31 +160,31 @@
               <input type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked"
                 required>
               <label class="custom-control-label" for="customControlValidation1"><img
-                  src="assets/images/review-image/5star.png" alt=""></label>
+                  src="{{URL::to('frontend/assets/images/review-image/5star.png')}}" alt=""></label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked"
                 required>
               <label class="custom-control-label" for="customControlValidation2"><img
-                  src="assets/images/review-image/4star.png" alt=""></label>
+                  src="{{URL::to('frontend/assets/images/review-image/4star.png')}}" alt=""></label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked"
                 required>
               <label class="custom-control-label" for="customControlValidation3"><img
-                  src="assets/images/review-image/3star.png" alt=""></label>
+                  src="{{URL::to('frontend/assets/images/review-image/3star.png')}}" alt=""></label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="customControlValidation4" name="radio-stacked"
                 required>
               <label class="custom-control-label" for="customControlValidation4"><img
-                  src="assets/images/review-image/2star.png" alt=""></label>
+                  src="{{URL::to('frontend/assets/images/review-image/2star.png')}}" alt=""></label>
             </div>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="customControlValidation5" name="radio-stacked"
                 required>
               <label class="custom-control-label" for="customControlValidation5"><img
-                  src="assets/images/review-image/1star.png" alt=""></label>
+                  src="{{URL::to('frontend/assets/images/review-image/1star.png')}}" alt=""></label>
             </div>
 
             <div class="form-group">

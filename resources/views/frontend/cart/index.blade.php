@@ -152,8 +152,11 @@
                                     <h3>BDT<span class="subtotal">{{$grand_total}}</span></h3>
                                 </div>
                             </div>
-
-                            <button type="submit" class="checkout-button d-inline-block">CHECKOUT<i class="fas fa-angle-double-right"></i></button>
+                            @if(Auth::check())
+                                <button style="width:92%" type="submit" class="checkout-button">CHECKOUT<i class="fas fa-angle-double-right"></i></button>
+                            @else
+                            <a href="{{route('customer.login')}}" type="submit" class="checkout-button">CHECKOUT<i class="fas fa-angle-double-right"></i></a>
+                            @endif
                         </form>
                         </div>
                     </div>

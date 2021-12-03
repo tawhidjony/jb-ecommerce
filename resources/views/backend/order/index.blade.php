@@ -33,7 +33,7 @@
                                 <td>{{$item->user->name}}</td>
                                 <td>{{$item->shipping->address}}</td>
                                 <td>{{$item->payment->payment_method}}</td>
-                                <td>{{$item->status == 0 ? 'Pending' : 'Complete'}}</td>
+                                <td>{{$item->order_status == 0 ? 'Pending' : 'Complete'}}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{route('order.show', $item->id)}}"><button class="btn btn-danger btn-sm "><i class="bx bx-edit-alt"></i>Show </button></a>

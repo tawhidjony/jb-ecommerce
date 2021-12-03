@@ -70,22 +70,22 @@ class CartController extends Controller
 
               if($payment){
                   $data = [];
-                  $data['payment_id'] = $payment->id;
-                  $data['shipping_id'] = $request->shipping_id;
-                  $data['user_id'] = Auth::user()->id;
-                  $data['order_total'] = Cart::subtotal();
-                  $data['status'] = 0;
+                  $data['payment_id']   = $payment->id;
+                  $data['shipping_id']  = $request->shipping_id;
+                  $data['user_id']      = Auth::user()->id;
+                  $data['order_total']  = Cart::subtotal();
+                  $data['status']       = 1;
                   $order = Order::create($data);
 
                   if($order){
                       $cart_content = Cart::content();
                       foreach ($cart_content as $cart){
                           OrderDetails::create([
-                              'order_id' => $order->id,
-                              'product_id' => $cart->id,
-                              'variation' => $cart->variation,
-                              'qty' => $cart->qty,
-                              'subtotal' => $cart->qty * $cart->price
+                              'order_id'    => $order->id,
+                              'product_id'  => $cart->id,
+                              'variation'   => $cart->options->variation[0],
+                              'qty'         => $cart->qty,
+                              'subtotal'    => $cart->qty * $cart->price
                           ]);
                       }
                       DB::commit();
