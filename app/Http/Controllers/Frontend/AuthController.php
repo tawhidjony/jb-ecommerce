@@ -19,11 +19,20 @@ class AuthController extends Controller
     }
 
     public function attemptLogin(Request $request){
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('home.index')->withSuccess('Signed in');
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        try {
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials)) {
+                return redirect()->route('home.index')->withSuccess('Signed in');
+            }
+        } catch (\Exception $e) {
+            $e->getMessage();
         }
     }
+
     public function register()
     {
         return view('frontend.auth.register');
@@ -70,6 +79,41 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
         return redirect('/');
+    }
+
+    public function changePassword(Request $request)
+    {
+
+        $this->validate($request, [
+            'old_password' => 'required',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required_with:password|same:password|min:6'
+        ]);
+        $data = $request->all();
+        $user = auth()->user();
+
+        if (!Hash::check($data['old_password'], $user->password)) {
+            return back()->with('error', 'The specified password does not match the database password');
+        } else {
+            $user->update([
+                'password' => Hash::make($data['password']),
+            ]);
+            return redirect()->back()->with('success', 'Password changed successfully');
+        }
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $data = $request->all();
+        $user = auth()->user();
+        $user->update([
+            'full_name' => $data['full_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'gender' => $data['gender'],
+            'date_of_birth' => $data['date_of_birth'],
+        ]);
+        return redirect()->back()->with('success', 'Profile updated successfully');
     }
 
 }

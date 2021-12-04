@@ -43,6 +43,8 @@ Route::post('/customer/attempt', [FrontendAuthController::class, 'attemptLogin']
 Route::get('/customer/register', [FrontendAuthController::class, 'register'])->name('customer.register');
 Route::post('/customer/store', [FrontendAuthController::class, 'registerStore'])->name('customer.store');
 Route::post('/logout-front', [FrontendAuthController::class, 'logoutPerform'])->name('customer.logout');
+Route::post('/profile-update', [FrontendAuthController::class, 'profileUpdate'])->name('profile.update');
+Route::post('/password-change', [FrontendAuthController::class, 'changePassword'])->name('password.changes');
 
 // Customer Profile
 Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');

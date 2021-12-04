@@ -26,7 +26,6 @@ class UserController extends Controller
         $users = User::orderBy('id', 'desc')->whereHas('roles',function ($role){
              $role->where('id','>', Auth::user()->roles->first()->id);
         })->get();
-
         return view('backend.users.index', compact('users'));
     }
 
@@ -180,5 +179,8 @@ class UserController extends Controller
             return redirect()->route('users.index');
         }
     }
+
+
+
 
 }

@@ -16,7 +16,8 @@
                   <h3>My Profile</h3>
                   <p>Manage and protect your account</p>
                 </div>
-                <form>
+                <form action="{{route('profile.update')}}" method="POST" >
+                    @csrf
                   <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
                     <span class="user-name">{{$user->name}}</span>
@@ -43,49 +44,49 @@
                     <div class="redio-area was-validated d-flex">
                       <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" id="customControlValidation1"
-                          name="radio-stacked" required>
+                          name="gender" value="male"  required {{ $user->gender == "male" ? 'checked' :"" }} >
                         <label class="custom-control-label" for="customControlValidation1">Male</label>
                       </div>
                       <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" id="customControlValidation2"
-                          name="radio-stacked" required>
+                          name="gender" value="female" required {{ $user->gender == "female" ? 'checked' :"" }}>
                         <label class="custom-control-label" for="customControlValidation2">Female</label>
                       </div>
                       <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" id="customControlValidation3"
-                          name="radio-stacked" required>
+                          name="gender" value="other" required >
                         <label class="custom-control-label" for="customControlValidation3">Other</label>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label>Date Of Birth</label>
-                    <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control birth-date">
+                    <input type="date" name="date_of_birth" value="{{$user->date_of_birth}}" max="3000-12-31" min="1000-01-01" class="form-control birth-date">
                   </div>
-                  <button type="submit" class="primary-btn">Save</button>
+                  <button type="submit" class="primary-btn">Update</button>
                 </form>
               </div>
               <!-- profile area end -->
 
               <!-- password area start -->
-              <div class="profile-area password-area mt-5">
+              <div class="mt-5 profile-area password-area">
 
                 <div class="all-heading-left ">
                   <h3>password</h3>
                 </div>
-                <form>
-
+                <form action="{{route('password.changes')}}" method="POST">
+                    @csrf
                   <div class="form-group">
                     <label for="inputCurrentPassword">Current password</label>
-                    <input type="password" class="form-control" id="inputCurrentPassword" placeholder="Password">
+                    <input type="password" name="old_password" class="form-control" id="inputCurrentPassword" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="inputNewPassword">New Password</label>
-                    <input type="password" class="form-control" id="inputNewPassword" placeholder="Password">
+                    <input type="password" name="password" class="form-control" id="inputNewPassword" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="inputRetypeNewPassword">Retype New password</label>
-                    <input type="password" class="form-control" id="inputRetypeNewPassword" placeholder="Password">
+                    <input type="password" name="password_confirmation" class="form-control" id="inputRetypeNewPassword" placeholder="Password">
                   </div>
                   <button type="submit" class="primary-btn">Update Password</button>
                 </form>
@@ -99,7 +100,7 @@
                 <!-- ------------------------------------------------------------------------- -->
                 <!--single  address start -->
                 @forelse ($shipping as $shippingItem)
-                    <div class="address  d-flex">
+                    <div class="address d-flex">
                     <div class="defult-tag ">
                         @if ($shippingItem->status == 1)
                             <span class="">Default  </span>
