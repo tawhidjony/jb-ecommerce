@@ -42,19 +42,23 @@ Route::get('/customer/login', [FrontendAuthController::class, 'login'])->name('c
 Route::post('/customer/attempt', [FrontendAuthController::class, 'attemptLogin'])->name('customer.attempt');
 Route::get('/customer/register', [FrontendAuthController::class, 'register'])->name('customer.register');
 Route::post('/customer/store', [FrontendAuthController::class, 'registerStore'])->name('customer.store');
-Route::post('/logout-front', [FrontendAuthController::class, 'logoutPerform'])->name('customer.logout');
-Route::post('/profile-update', [FrontendAuthController::class, 'profileUpdate'])->name('profile.update');
-Route::post('/password-change', [FrontendAuthController::class, 'changePassword'])->name('password.changes');
 
-// Customer Profile
-Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');
-Route::get('/purchase-details-user', [FrontendCustomerController::class, 'personalDetails'])->name('purchase.details');
-Route::get('/single-purchase-details/{id}', [FrontendCustomerController::class, 'singlePurchaseDetails'])->name('single.purchase.details');
+
 
 
 Auth::routes();
-Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
+Route::middleware('front_auth')->group(function () {
+    Route::post('/profile-update', [FrontendAuthController::class, 'profileUpdate'])->name('profile.update');
+    Route::post('/password-change', [FrontendAuthController::class, 'changePassword'])->name('password.changes');
+    // Customer Profile
+    Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');
+    Route::get('/purchase-details-user', [FrontendCustomerController::class, 'personalDetails'])->name('purchase.details');
+    Route::get('/single-purchase-details/{id}', [FrontendCustomerController::class, 'singlePurchaseDetails'])->name('single.purchase.details');
     Route::post('/cart/store', [FrontendCartController::class, 'cartItemStore'])->name('cart.item.store');
+    Route::post('/logout-front', [FrontendAuthController::class, 'logoutPerform'])->name('customer.logout');
+});
+
+Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
     Route::group(['middleware' => ['check_permission']], function () {
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('/category', CategoryController::class);

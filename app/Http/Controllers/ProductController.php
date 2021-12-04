@@ -58,15 +58,20 @@ class ProductController extends Controller
             $data['thumbnail'] ='';
         }
 
-        $productImage = $request->file('product_img');
-        foreach ($productImage as $file) {
-            $filePath = $this->StoreFile($file, 'upload/products/product_img');
-            if ($filePath) {
-                $data['product_img'][] = $filePath;
+
+
+        if($request->hasFile('product_img')){
+            foreach ($request->file('product_img') as $file){
+                $filePath = $this->StoreFile($file, 'upload/products/product_img');
+                if ($filePath) {
+                    $productImage[] = $filePath;
+                }
             }
         }
 
+        $data['product_img'] = json_encode($productImage);
         $productStore = Product::create($data);
+
         if ($productStore) {
             return redirect()->route('product.index')->with('Product Created Successfully');
         }else{
