@@ -58,19 +58,28 @@ class ProductController extends Controller
             $data['thumbnail'] ='';
         }
 
-
-
+        $productImg = [];
         if($request->hasFile('product_img')){
             foreach ($request->file('product_img') as $file){
                 $filePath = $this->StoreFile($file, 'upload/products/product_img');
                 if ($filePath) {
-                    $productImage[] = $filePath;
+                    $productImg[] = $filePath;
                 }
             }
         }
 
-        $data['product_img'] = json_encode($productImage);
-        $productStore = Product::create($data);
+        $pro_img = $productImg;
+        $productStore = New Product();
+        $productStore->uuid         = Str::uuid();
+        $productStore->name         = $data['name'];
+        $productStore->category_id  = $data['category_id'];
+        $productStore->price        = $data['price'];
+        $productStore->qty          = $data['qty'];
+        $productStore->variation    = $data['variation'];
+        $productStore->description  = $data['description'];
+        $productStore->thumbnail    = $data['thumbnail'];
+        $productStore->product_img  = $pro_img;
+        $productStore->save();
 
         if ($productStore) {
             return redirect()->route('product.index')->with('Product Created Successfully');
