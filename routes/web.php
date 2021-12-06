@@ -49,6 +49,7 @@ Route::post('/customer/store', [FrontendAuthController::class, 'registerStore'])
 Auth::routes();
 Route::middleware('front_auth')->group(function () {
     Route::post('/profile-update', [FrontendAuthController::class, 'profileUpdate'])->name('profile.update');
+    Route::post('/profile/picture/update', [FrontendAuthController::class, 'profilePicUpdate'])->name('profilePic.update');
     Route::post('/password-change', [FrontendAuthController::class, 'changePassword'])->name('password.changes');
     // Customer Profile
     Route::get('/personal-details-user-account', [FrontendCustomerController::class, 'index'])->name('customer.index');

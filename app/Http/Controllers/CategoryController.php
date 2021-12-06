@@ -106,19 +106,15 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         try {
-
             $request->validate([
                 'name' => 'required',
             ]);
             $data = $request->all();
-            $findCategory = Category::findOrFail($id);
+            $findCategory = Category::find($id);
             $filePath = $this->UpdateFile($request->file('photo'), $findCategory->photo, 'upload/category');
-            if ($filePath) {
+            if ($filePath !== null) {
                 $data['photo'] = $filePath;
-            }else{
-                $data['photo'] ='';
             }
-
             $updateCategory = $findCategory->update($data);
             if($updateCategory){
                 return redirect()->route('category.index')->with('Category has been success');

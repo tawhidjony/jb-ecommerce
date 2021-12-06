@@ -46,6 +46,11 @@ body {
   transition: all .3s;
 }
 
+.update-btn {
+  padding: .2rem 1rem;
+  font-size: 1.2rem;
+}
+
 .link-button {
   background-color: #40ceb2;
   color: #fff;
@@ -685,6 +690,7 @@ a:hover {
   color: #444444;
   font-size: 1.4rem;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 .main-top-bar .search-bar .contant-area .cart-area .user-profile-area .user-area .user-name .user-account-area {
@@ -1825,6 +1831,7 @@ a:hover {
   font-weight: 600;
   color: #444444;
   margin: 0.5rem 0;
+  text-transform: capitalize;
 }
 
 .account-detalis .left-side-area .profile-pic-area .change-pic {
@@ -1833,6 +1840,20 @@ a:hover {
   font-weight: 600;
   padding: 0 0.5rem;
   border: solid 0.1rem #cfcfcf;
+}
+
+.account-detalis .left-side-area .profile-pic-area .input-group .custom-file {
+  cursor: pointer;
+}
+
+.account-detalis .left-side-area .profile-pic-area .input-group .custom-file input {
+  cursor: pointer;
+}
+
+.account-detalis .left-side-area .profile-pic-area .input-group .custom-file .custom-file-label {
+  font-weight: 600;
+  color: #8b8b8b;
+  cursor: pointer !important;
 }
 
 .account-detalis .left-side-area .side-menu-area {
@@ -3806,10 +3827,11 @@ a:hover {
 
 .add-address .modal-dialog .modal-content {
   margin-top: 2rem;
+  border-bottom: solid 0.5rem #40ceb2;
 }
 
 .add-address form {
-  padding-right: 3rem;
+  padding-right: 0rem !important;
 }
 
 .add-address h5 {
@@ -3823,7 +3845,6 @@ a:hover {
 }
 
 .add-address .modal-footer {
-  border-bottom: solid 0.4rem #40ceb2 !important;
   -webkit-box-pack: right !important;
   -webkit-justify-content: right !important;
       -ms-flex-pack: right !important;
@@ -3866,9 +3887,9 @@ a:hover {
 .add-address .form-group textarea,
 .add-address .form-group input {
   -webkit-box-flex: 0 !important;
-  -webkit-flex: 0 0 70% !important;
-      -ms-flex: 0 0 70% !important;
-          flex: 0 0 70% !important;
+  -webkit-flex: 0 0 65% !important;
+      -ms-flex: 0 0 65% !important;
+          flex: 0 0 65% !important;
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -4412,16 +4433,4 @@ a:hover {
             flex: 0 0 25%;
     max-width: 25%;
   }
-}
-.no-product {
-    background-color: #fff;
-    padding: 1rem;
-    margin-top: 1rem;
-}
-
-.no-product h3 {
-    text-align: center;
-    font-size: 25px;
-    font-weight: 700;
-    padding: 30px;
 }

@@ -202,7 +202,8 @@
                           Address</h5>
                       </div>
                       <div class="modal-body">
-                        <form>
+                        <form action="{{route('shipping.update')}}" method="POST">
+                            @csrf
                           <div class="form-group">
                             <label for="exampleInputName">Name</label>
                             <input type="text" class="form-control" id="exampleInputName"

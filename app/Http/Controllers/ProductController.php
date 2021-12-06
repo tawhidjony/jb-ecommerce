@@ -43,7 +43,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        $news = $request->variation;
+        return $news;
       try {
         $request->validate([
             'name' => 'required',

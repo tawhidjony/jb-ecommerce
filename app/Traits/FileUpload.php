@@ -23,8 +23,10 @@ trait FileUpload {
                     Storage::delete($DeleteImg);
                 }
             }
+            return  $path;
+        }else{
+            return $DeleteImg;
         }
-        return  $path;
     }
 
     public function DeleteFile($DeleteImg){

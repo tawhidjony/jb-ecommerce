@@ -65,7 +65,7 @@
                 <div class="img-area">
                   <img src="{{URL::to($categories->photo)}}" alt="">
                 </div>
-                <span>Electronics</span>
+                <span>{{$categories->name}}</span>
               </a>
             @endforeach
         </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Shipping;
 use App\Models\User;
+use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 class AuthController extends Controller
 {
+    use FileUpload;
     public function login()
     {
         return view('frontend.auth.login');
@@ -114,6 +116,20 @@ class AuthController extends Controller
             'date_of_birth' => $data['date_of_birth'],
         ]);
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
+    public function profilePicUpdate(Request $request)
+    {
+        $data = $request->all();
+        $userPic = Auth::user();
+        $filePath = $this->UpdateFile($request->file('photo'), $userPic->photo, 'upload/profile');
+        if ($filePath) {
+            $data['photo'] = $filePath;
+        }
+        $profileUpdate = $userPic->update($data);
+        if ($profileUpdate) {
+            return redirect()->back()->with('success', 'Profile picture updated successfully');
+        }
     }
 
 }

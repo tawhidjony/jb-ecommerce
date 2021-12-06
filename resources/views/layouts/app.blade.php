@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Apartment Management System - @yield('title')</title>
+    <title>JB E-commerce - @yield('title')</title>
 
     @include('layouts.partials.css')
     @notifyCss
@@ -33,7 +33,7 @@
         <!--End Back To Top Button-->
         <!--footer -->
         <div class="footer">
-            <p class="mb-0">copyright @2020  </p>
+            <p class="mb-0">© 2021 JB E-commerce All Rights Reserved </p>
         </div>
         <!-- end footer -->
     </div>

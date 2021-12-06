@@ -59,9 +59,7 @@
                 </div>
                 <div class="form-group">
                     <label for="formControlRange">Variation </label>
-                    <select multiple data-role="tagsinput"  class="form-control" name="variation[]">
-                        <option value="Amsterdam">Amsterdam</option>
-                    </select>
+                    <select multiple data-role="tagsinput" class="form-control" name="variation[]"></select>
                 </div>
                 <div class="form-group">
                     <label for="price">{{ __('Product Description') }}</label>

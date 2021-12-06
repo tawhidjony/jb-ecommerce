@@ -25,7 +25,6 @@ class HomeController extends Controller
     public function index()
     {
 
-        connectify('success', 'Connection Found', 'Success Message Here');
         return view('dashboard');
     }
 }
