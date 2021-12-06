@@ -13,7 +13,7 @@ class CustomerController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $shipping = Shipping::where('user_id', $user->id)->get();
+        $shipping = Shipping::where('user_id', $user->id)->first();
         return view('frontend.customer.personal-details-user', compact('user', 'shipping'));
     }
 

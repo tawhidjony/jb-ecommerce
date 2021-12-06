@@ -13,8 +13,9 @@
                             <div class="purchase-area">
                                 <div class="single-heading-back">
                                     <div class="all-heading">
-                                        <a href="personal-detalis-user-account.html"><i
-                                                class="fas fa-backspace"></i>Back</a>
+                                        <a href="{{route('home.index')}}">
+                                            <i class="fas fa-backspace"></i>Back
+                                        </a>
                                     </div>
                                     <h3>My Purchase</h3>
                                 </div>

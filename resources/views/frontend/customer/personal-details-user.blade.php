@@ -92,158 +92,100 @@
                 </form>
               </div>
               <!-- password area end -->
-              <!-- address area start -->
+               <!-- address area start -->
               <div class="address-area">
                 <div class="all-heading-left">
                   <h3>My Addresses</h3>
                 </div>
                 <!-- ------------------------------------------------------------------------- -->
                 <!--single  address start -->
-                @forelse ($shipping as $shippingItem)
-                    <div class="address d-flex">
-                    <div class="defult-tag ">
-                        @if ($shippingItem->status == 1)
-                            <span class="">Default  </span>
-                        @else
-
-                        @endif
+                <div class="address  d-flex">
+                  <div class="defult-tag ">
+                    <span class="actived">Default</span>
+                  </div>
+                  <div class="display-address">
+                    <div class="form-group">
+                      <label for="full-name">Full Name</label>
+                      <span class="full-name">{{$user->full_name}}</span>
                     </div>
-                    <div class="display-address">
-                      <div class="form-group">
-                        <label for="full-name">Full Name</label>
-                        <span class="full-name">Alam Jahangir</span>
-                      </div>
-                      <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <span class="user-name">+60234242342</span>
-                      </div>
-                      <div class="form-group">
-                        <label for="address">Address</label>
-                        <span class="address-line">{{$shippingItem->address}}</span>
-                      </div>
+                    <div class="form-group">
+                      <label for="phone">Phone</label>
+                      <span class="user-name">{{$user->phone}}</span>
                     </div>
-                    <div class="oparation-area d-flex">
-                      <div class="edit"><a href="#" data-toggle="modal" data-target="#editAddress">Edit</a></div>
-                      <div class="delete"><a href="#">Delete</a></div>
-                      <div class="set-up"> <a href="#">Set As Default</a></div>
+                    <div class="form-group">
+                      <label for="address">Address</label>
+                      <span class="address-line">
+                          {{$shipping->address}}
+                          {{$shipping->status}}
+                          {{$shipping->city}}
+                          {{$shipping->post_code}}
+                        </span>
                     </div>
-
-                    <!-- edit address model start -->
-                    <div class="modal fade add-address" id="editAddress" tabindex="-1" role="dialog"
-                      aria-labelledby="editAddressTitle" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-edit"></i>Edit Address
-                            </h5>
-                          </div>
-                          <div class="modal-body">
-                            <form>
-                              <div class="form-group">
-                                <label for="exampleInputName">Name</label>
-                                <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
-                                  placeholder="EX: Alam Jahangir">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputPhoneNumber">Phone Number</label>
-                                <input type="number" class="form-control" id="exampleInputPhoneNumber"
-                                  aria-describedby="emailHelp" placeholder="Ex: +60131232143">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlAddress">Address</label>
-                                <textarea class="form-control" id="exampleFormControlAddress" rows="2"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputState">State</label>
-                                <input type="text" class="form-control" id="exampleInputState"
-                                  aria-describedby="emailHelp" placeholder="EX: Selangor">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputCity">City</label>
-                                <input type="text" class="form-control" id="exampleInputCity" aria-describedby="emailHelp"
-                                  placeholder="EX: Petaling Jaya">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputPostcode">Postcode</label>
-                                <input type="number" class="form-control" id="exampleInputPostcode"
-                                  aria-describedby="emailHelp" placeholder="Ex: 47301">
-                              </div>
-
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="primary-btn close-btn" data-dismiss="modal">Close</button>
-                            <button type="button" class="primary-btn ">Save Changes</button>
-                          </div>
+                  </div>
+                  <div class="oparation-area d-flex">
+                    <div class="edit"><a href="#" data-toggle="modal" data-target="#editAddress">Edit</a></div>
+                    <!-- <div class="delete"><a href="#">Delete</a></div> -->
+                    <!-- <div class="set-up"> <a href="#">Set As Default</a></div> -->
+                  </div>
+                  <!-- edit address model start -->
+                  <div class="modal fade add-address" id="editAddress" tabindex="-1" role="dialog"
+                    aria-labelledby="editAddressTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-edit"></i>Edit Address
+                          </h5>
                         </div>
-                      </div>
-                    </div>
-                    <!-- edit address model end -->
-                  </div>
-                @empty
+                        <div class="modal-body">
+                          <form action="{{route('shipping.update')}}" method="POST">
+                              @csrf
+                            <div class="form-group">
+                              <label for="exampleInputName">Name</label>
+                              <input type="text"  value="{{Auth::user()->full_name}}" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+                                placeholder="EX: Alam Jahangir">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPhoneNumber">Phone Number</label>
+                              <input type="number" value="{{Auth::user()->phone}}" class="form-control" id="exampleInputPhoneNumber"
+                                aria-describedby="emailHelp" placeholder="Ex: +60131232143">
+                              <input type="hidden" name="shipping_id" value="{{Auth::user()->id}}" >
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlAddress">Address</label>
+                              <textarea name="address" class="form-control" id="exampleFormControlAddress" rows="2">{{$shipping->address}}</textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputState">State</label>
+                              <input type="text" name="state" value="{{$shipping->state}}" class="form-control" id="exampleInputState"
+                                aria-describedby="emailHelp" placeholder="EX: Selangor">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputCity">City</label>
+                              <input type="text" name="city" value="{{$shipping->city}}" class="form-control" id="exampleInputCity" aria-describedby="emailHelp"
+                                placeholder="EX: Petaling Jaya">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPostcode">Postcode</label>
+                              <input type="number" name="post_code" value="{{$shipping->post_code}}" class="form-control" id="exampleInputPostcode"
+                                aria-describedby="emailHelp" placeholder="Ex: 47301">
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="primary-btn close-btn" data-dismiss="modal">Close</button>
+                              <button type="submit" class="primary-btn ">Save Changes</button>
+                            </div>
+                          </form>
+                        </div>
 
-                @endforelse
-                <!-- ------------------------------------------------------------------------- -->
-
-                <!-- add address modal start -->
-
-                <!-- Button trigger modal -->
-                <button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModalCenter">
-                  Add New Address
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade add-address" id="exampleModalCenter" tabindex="-1" role="dialog"
-                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-address-card"></i>Add
-                          Address</h5>
-                      </div>
-                      <div class="modal-body">
-                        <form action="{{route('shipping.update')}}" method="POST">
-                            @csrf
-                          <div class="form-group">
-                            <label for="exampleInputName">Name</label>
-                            <input type="text" class="form-control" id="exampleInputName"
-                              placeholder="EX: Alam Jahangir">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputPhoneNumber">Phone Number</label>
-                            <input type="number" class="form-control" id="exampleInputPhoneNumber"
-                              placeholder="Ex: +60131232143">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlAddress">Address</label>
-                            <textarea class="form-control" id="exampleFormControlAddress" rows="2"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputState">State</label>
-                            <input type="text" class="form-control" id="exampleInputState" placeholder="EX: Selangor">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputCity">City</label>
-                            <input type="text" class="form-control" id="exampleInputCity"
-                              placeholder="EX: Petaling Jaya">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputPostcode">Postcode</label>
-                            <input type="number" class="form-control" id="exampleInputPostcode" placeholder="Ex: 47301">
-                          </div>
-
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="primary-btn close-btn" data-dismiss="modal">Close</button>
-                        <button type="button" class="primary-btn ">Save Changes</button>
                       </div>
                     </div>
                   </div>
+                  <!-- edit address model end -->
                 </div>
-                <!-- add address modal end -->
+                <!--single  address end -->
               </div>
               <!-- address area end -->
+
+
             </div>
           </div>
         </div>

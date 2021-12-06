@@ -21,17 +21,17 @@
               <!-- profile picture area end -->
 
               <div class="side-menu-area">
-                <a href="{{route('customer.index')}}" class="active">
+                <a href="{{route('customer.index')}}" class="{{Request::is('personal-details-user-account') ? 'active':""}}">
                   <div class="v-list d-flex"><i class="fas fa-user"></i>
-                    <h4>My Account Deatlis</h4>
+                    <h4>My Account Deatlis </h4>
                   </div>
                 </a>
-                <a href="{{route('purchase.details')}}">
+                <a href="{{route('purchase.details')}}" class="{{Request::is('purchase-details-user') ? 'active':""}}">
                   <div class="v-list d-flex"><i class="fas fa-store"></i>
                     <h4>My Purchase</h4>
                   </div>
                 </a>
-                <a href="{{route('cart.index')}}">
+                <a href="{{route('cart.index')}}" class="{{Request::is('cart') ? 'active':""}}">
                   <div class="v-list d-flex"><i class="fas fa-shopping-cart"></i>
                     <h4>My Shopping Cart</h4>
                   </div>

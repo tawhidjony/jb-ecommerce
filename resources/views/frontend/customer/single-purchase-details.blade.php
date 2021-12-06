@@ -12,7 +12,7 @@
               <div class="purchase-area single-p-detalis">
                 <div class="single-heading-back">
                   <div class="all-heading">
-                    <a href="purchase-detalis-user-account.html"><i class="fas fa-backspace"></i>Back</a>
+                    <a href="{{route('purchase.details')}}"><i class="fas fa-backspace"></i>Back</a>
                   </div>
                 </div>
                 <!--  single-product details area start-->
@@ -20,7 +20,15 @@
                   <div class="header-ber d-flex justify-content-between">
                     <div class="left-side">
                       <span class="delivered">ORDER STATUS</span>
-                      <span class="p-status">ORDER PLACED</span>
+                      <span class="p-status">
+                          @if ( $purchaseOrderDetails->order_status === 1)
+                            Order Completed
+                          @elseif ($purchaseOrderDetails->shipping_status === 1)
+                            Shiping Procesing
+                          @elseif ( $purchaseOrderDetails->status === 1)
+                            ORDER PLACEd
+                          @endif
+                      </span>
                     </div>
                     <div class="order-id">
                       Order ID : <span class="id-nbo">BG-{{$purchaseOrderDetails->id}}</span>

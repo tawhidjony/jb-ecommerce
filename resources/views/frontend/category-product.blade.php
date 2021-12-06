@@ -6,7 +6,7 @@
       <div class="container">
         <div class="banner-img">
           <img src="{{asset('frontend/assets/images/banner/banner2.png')}}" alt="">
-          <h2>Electronics</h2>
+          <h2>{{$categoryId->name}}</h2>
         </div>
       </div>
     </div>

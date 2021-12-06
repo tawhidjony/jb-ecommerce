@@ -16,7 +16,7 @@
                             <div class="purchase-area">
                                 <div class="single-heading-back">
                                     <div class="all-heading">
-                                        <a href="shoping-cart-user-account.html"><i class="fas fa-backspace"></i>Back</a>
+                                        <a href="{{route('home.index')}}"><i class="fas fa-backspace"></i>Back</a>
                                     </div>
                                     <h3>My Shopping Cart</h3>
                                 </div>
@@ -71,15 +71,15 @@
 
                                             <form action="{{ route('cart.destroy', $cartItem->rowId) }}" class="del-action-form">
                                                 @csrf
-                                                <button type="submit" class="btn del-but">Delete</button>
+                                                <button type="submit" class="btn del-but" >Delete</button>
                                             </form>
 
                                         </div>
                                     </div>
                                     <input type="hidden" value="{{ $grand_total += $cartItem->subtotal}}">
                                 @empty
-                                    <div class="no-product">
-                                        <h3>No Product in Cart</h3>
+                                    <div class="no-product bg-white my-4 p-5">
+                                        <h3 class="text-center">No Product in Cart</h3>
                                     </div>
                                 @endforelse
 
@@ -98,6 +98,8 @@
                             <div class="shiping-address-delivary">
                                 <h3>Delivery Address</h3>
                                 <div class="address-contain">
+                                    <h4 class="user-name">{{Auth::user()->full_name}}</h4>
+                                    <span class="user-phone-number">{{Auth::user()->phone}}</span>
                                     <span class="user-address">
                                         @if(!$shippingAddress == "")
                                             {{$shippingAddress->address}},
@@ -153,9 +155,9 @@
                                 </div>
                             </div>
                             @if(Auth::check())
-                                <button style="width:92%" type="submit" class="checkout-button">CHECKOUT<i class="fas fa-angle-double-right"></i></button>
+                                <button style="width:92%" type="submit" class="checkout-button" {{ $grand_total === 0 ? "disabled":""}}>CHECKOUT<i class="fas fa-angle-double-right"></i></button>
                             @else
-                            <a href="{{route('customer.login')}}" type="submit" class="checkout-button">CHECKOUT<i class="fas fa-angle-double-right"></i></a>
+                            <a href="{{route('customer.login')}}" type="submit" class="checkout-button" {{ $grand_total === 0 ? "disabled":""}}>CHECKOUT<i class="fas fa-angle-double-right"></i></a>
                             @endif
                         </form>
                         </div>

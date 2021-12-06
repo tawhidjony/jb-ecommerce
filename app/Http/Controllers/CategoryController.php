@@ -151,6 +151,6 @@ class CategoryController extends Controller
         $categoryId = Category::where('uuid', $uuid)->first();
         $categoryAll = Category::all();
         $categoryProduct = Product::where('category_id', $categoryId->id)->get();
-        return view('frontend.category-product', compact('categoryProduct', 'categoryAll'));
+        return view('frontend.category-product', compact('categoryProduct', 'categoryAll', 'categoryId'));
     }
 }

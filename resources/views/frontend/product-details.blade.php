@@ -97,7 +97,7 @@
           </div>
         </div>
 
-{{--
+
         <div class="comon-section product-rating">
           <div class="heading-every-section d-flex justify-content-between">
             <h2>product rating</h2>
@@ -108,64 +108,26 @@
                 <span class="rating-star-count">4</span>
                 <h5>out of 5</h5>
               </div>
-              <img src="assets/images/review-image/4star.png" alt="">
+              <img src="{{URL::to('frontend/assets/images/review-image/4star.png')}}" alt="">
             </div>
             <div class="navigration-option d-flex">
               <div class="v-list">
                 <a href="#" class="select">All</a>
               </div>
-              <div class="v-list"><a href="#">5 Star <span class="five-star-count">(100)</span> </a></div>
-              <div class="v-list"><a href="#">4 Star <span class="four-star-count">(50)</span> </a></div>
-              <div class="v-list"><a href="#">3-Star <span class="three-star-count">(30)</span> </a></div>
-              <div class="v-list"><a href="#">2 Star <span class="two-star-count">(5)</span> </a></div>
+              <div class="v-list"><a href="#">5 Star <span class="five-star-count">(0)</span> </a></div>
+              <div class="v-list"><a href="#">4 Star <span class="four-star-count">(0)</span> </a></div>
+              <div class="v-list"><a href="#">3-Star <span class="three-star-count">(0)</span> </a></div>
+              <div class="v-list"><a href="#">2 Star <span class="two-star-count">(0)</span> </a></div>
               <div class="v-list"><a href="#">1 Star <span class="one-star-count">(0)</span> </a></div>
-              <div class="v-list"><a href="#">With Comments <span class="with-comments">(100)</span> </a></div>
-              <div class="v-list"><a href="#">With Media <span class="with-media">(24)</span> </a></div>
+              <div class="v-list"><a href="#">With Comments <span class="with-comments">(0)</span> </a></div>
+              <div class="v-list"><a href="#">With Media <span class="with-media">(0)</span> </a></div>
             </div>
           </div>
 
           <div class="customar-comment-area">
-            <div class="single-customer d-flex">
-              <div class="customer-pic"><img src="assets/images/my_picture_squre.jpg" alt=""></div>
-              <div class="customaer-info">
-                <h5>Alam Jahangir</h5>
-                <div class="given-star">
-                  <img src="assets/images/review-image/5star.png" alt="">
-                </div>
-                <div class="variation">Variation: <span class="buy-variation">Silver</span></div>
-                <p class="user-comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde error harum
-                  similique facere officia corporis culpa consequuntur praesentium porro id, labore nobis repellendus,
-                  assumenda laboriosam laborum corrupti possimus sequi totam!</p>
-                <div class="user-upload-product-pic d-flex">
-                  <img src="assets/images/product-img/product-1/po-3.png" alt="">
-                  <img src="assets/images/product-img/product-1/po-3.png" alt="">
-                  <img src="assets/images/product-img/product-1/po-3.png" alt="">
-                </div>
-                <div class="date-time">25-8-2021</div>
-              </div>
-            </div>
-            <div class="single-customer d-flex">
-              <div class="customer-pic"><img src="assets/images/my_picture_squre.jpg" alt=""></div>
-              <div class="customaer-info">
-                <h5>Alam Jahangir</h5>
-                <div class="given-star">
-                  <img src="assets/images/review-image/5star.png" alt="">
-                </div>
-                <div class="variation">Variation: <span class="buy-variation">Graphite</span></div>
-                <p class="user-comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde error harum
-                  similique facere officia corporis culpa consequuntur praesentium porro id, labore nobis repellendus,
-                  assumenda laboriosam laborum corrupti possimus sequi totam!</p>
-                <div class="user-upload-product-pic d-flex">
-                  <img src="assets/images/product-img/product-1/po-4.png" alt="">
-                  <img src="assets/images/product-img/product-1/po-4.png" alt="">
-                  <img src="assets/images/product-img/product-1/po-4.png" alt="">
-                </div>
-                <div class="date-time">25-8-2021</div>
-              </div>
-            </div>
-
+            <h3 class="m-5 text-center">This product is not rated yet</h3>
           </div>
-        </div> --}}
+        </div>
 
       </div>
     </div>
@@ -173,7 +135,7 @@
 
 
 
-{{--
+
     <section class="main-section-home populer-products">
       <div class="container">
         <div class="heading-every-section d-flex justify-content-between">
@@ -185,172 +147,40 @@
           <!-- main product area start -->
           <div class="main-product-area">
             <div class="row">
+                @foreach ($smilerProduct as $key => $item)
               <!-- single product card start -->
               <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                <a href="product-details.html">
+                <a href="{{route('home.show', $item->uuid)}}">
                   <div class="product-card">
                     <div class="product-image-area">
-                      <img src="assets/images/product-img/product-1/po-card.png" alt="">
+                        <img src="{{URL::to($item->thumbnail)}}" alt="">
                     </div>
                     <div class="product-heading">
-                      <h4>iPhone 13 Pro Max 256GB A15 Bionic chip. </h4>
+                      <h4>{{$item->name}}</h4>
                     </div>
                     <div class="product-price">
-                      <span class="before-price price">Bdt<strong>110000</strong> </span>
-                      <span class="after-price price">Bdt<strong>104500</strong></span>
+                        <span class="after-price price">BDT <strong>{{$item->price}}</strong></span>
                     </div>
                     <div class="p-card-footer d-flex justify-content-between">
-                      <div class="rating d-flex">
+                      {{-- <div class="rating d-flex">
                         <img src="assets/images/review-image/5star.png" alt="">
                         <span class="p-sold-count">(10)</span>
                       </div>
                       <div class="shop-location">
                         <h4>Dhaka</h4>
-                      </div>
+                      </div> --}}
                     </div>
-                    <div class="special-tag">
+                    {{-- <div class="special-tag">
                       <span class="p-special-tag">Recommend</span>
                     </div>
                     <div class="offer-percent">
                       <span class="p-percent">5%</span><br>OFF
-                    </div>
+                    </div> --}}
                   </div>
                 </a>
               </div>
               <!-- single product card end -->
-              <!-- single product card start -->
-              <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                <a href="product-details.html">
-                  <div class="product-card">
-                    <div class="product-image-area">
-                      <img src="assets/images/product-img/product-2/watch-main.jpg" alt="">
-                    </div>
-                    <div class="product-heading">
-                      <h4>Apple Watch, Gold Aluminum Case with Sport Loop, 40mm. </h4>
-                    </div>
-                    <div class="product-price">
-                      <span class="before-price price">Bdt<strong>25000</strong> </span>
-                      <span class="after-price price">Bdt<strong>24250</strong></span>
-                    </div>
-                    <div class="p-card-footer d-flex justify-content-between">
-                      <div class="rating d-flex">
-                        <img src="assets/images/review-image/5star.png" alt="">
-                        <span class="p-sold-count">(32)</span>
-                      </div>
-                      <div class="shop-location">
-                        <h4>Dhaka</h4>
-                      </div>
-                    </div>
-                    <div class="special-tag">
-                      <span class="p-special-tag">Recommend</span>
-                    </div>
-                    <div class="offer-percent">
-                      <span class="p-percent">3%</span><br>OFF
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <!-- single product card end -->
-              <!-- single product card start -->
-              <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                <a href="product-details.html">
-                  <div class="product-card">
-                    <div class="product-image-area">
-                      <img src="assets/images/product-img/product-3/laptop-main.png" alt="">
-                    </div>
-                    <div class="product-heading">
-                      <h4>MacBook Pro, 16-inch,10-Core CPU 16-Core GPU, 16GB Unified Memory, 1TB SSD Storage¹. </h4>
-                    </div>
-                    <div class="product-price">
-                      <span class="before-price price">Bdt<strong>230000</strong> </span>
-                      <span class="after-price price">Bdt<strong>229995</strong></span>
-                    </div>
-                    <div class="p-card-footer d-flex justify-content-between">
-                      <div class="rating d-flex">
-                        <img src="assets/images/review-image/5star.png" alt="">
-                        <span class="p-sold-count">(7)</span>
-                      </div>
-                      <div class="shop-location">
-                        <h4>Dhaka</h4>
-                      </div>
-                    </div>
-                    <div class="special-tag">
-                      <span class="p-special-tag">Recommend</span>
-                    </div>
-                    <div class="offer-percent">
-                      <span class="p-percent">5%</span><br>OFF
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <!-- single product card end -->
-              <!-- single product card start -->
-              <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                <a href="product-details.html">
-                  <div class="product-card">
-                    <div class="product-image-area">
-                      <img src="assets/images/product-img/product-4/tablet-main.png" alt="">
-                    </div>
-                    <div class="product-heading">
-                      <h4>iPad Air 256GB, Wi-Fi + Cellular model.</h4>
-                    </div>
-                    <div class="product-price">
-                      <span class="before-price price">Bdt<strong>75000</strong> </span>
-                      <span class="after-price price">Bdt<strong>73500</strong></span>
-                    </div>
-                    <div class="p-card-footer d-flex justify-content-between">
-                      <div class="rating d-flex">
-                        <img src="assets/images/review-image/5star.png" alt="">
-                        <span class="p-sold-count">(11)</span>
-                      </div>
-                      <div class="shop-location">
-                        <h4>Dhaka</h4>
-                      </div>
-                    </div>
-                    <div class="special-tag">
-                      <span class="p-special-tag">Recommend</span>
-                    </div>
-                    <div class="offer-percent">
-                      <span class="p-percent">2%</span><br>OFF
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <!-- single product card end -->
-              <!-- single product card start -->
-              <div class="col-6 col-lg-3 col-md-4 col-sm-6">
-                <a href="product-details.html">
-                  <div class="product-card">
-                    <div class="product-image-area">
-                      <img src="assets/images/product-img/product-5/airpods-main.png" alt="">
-                    </div>
-                    <div class="product-heading">
-                      <h4>AirPods Max with 6 months of Apple Music free!</h4>
-                    </div>
-                    <div class="product-price">
-                      <span class="before-price price">Bdt<strong>45000</strong> </span>
-                      <span class="after-price price">Bdt<strong>43200</strong></span>
-                    </div>
-                    <div class="p-card-footer d-flex justify-content-between">
-                      <div class="rating d-flex">
-                        <img src="assets/images/review-image/5star.png" alt="">
-                        <span class="p-sold-count">(13)</span>
-                      </div>
-                      <div class="shop-location">
-                        <h4>Dhaka</h4>
-                      </div>
-                    </div>
-                    <div class="special-tag">
-                      <span class="p-special-tag">Recommend</span>
-                    </div>
-                    <div class="offer-percent">
-                      <span class="p-percent">4%</span><br>OFF
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <!-- single product card end -->
-
+              @endforeach
 
             </div>
           </div>
@@ -358,7 +188,7 @@
         </div>
       </div>
     </section>
- --}}
+
 
 @endsection
 

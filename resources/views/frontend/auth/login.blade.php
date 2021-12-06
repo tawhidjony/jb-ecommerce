@@ -30,7 +30,7 @@
             <div class="create-account d-flex">
               <span class="or">Or</span>
               <span class="allrady-member">Don't Have an Account</span>
-              <a href="signup.html" class="primary-btn create-btn">Sinp Up</a>
+              <a href="{{route('customer.register')}}" class="primary-btn create-btn">Sinp Up</a>
             </div>
           </div>
         </div>

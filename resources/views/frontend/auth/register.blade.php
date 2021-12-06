@@ -20,9 +20,9 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="fullName">Full Name</label>
-                  <input type="email" name="full_name" class="form-control" id="fullName" placeholder="EX: Alam Jahangir">
-                  <label for="email">Email</label>
-                  <input type="email" name="email" class="form-control" id="email" placeholder="something@something.com">
+                  <input type="text" name="full_name" class="form-control" id="fullName" placeholder="EX: Alam Jahangir">
+                  <label for="Email">Email</label>
+                  <input type="email" name="email" class="form-control" id="Email" placeholder="something@something.com">
                   <label for="inputPassword4">Retype Password</label>
                   <input type="password" name="password_confirmation" class="form-control" id="inputPassword4" placeholder="Password">
                 </div>
@@ -54,7 +54,7 @@
             <div class="create-account d-flex">
               <span class="or">Or</span>
               <span class="allrady-member">Already Member</span>
-              <a href="login.html" class="primary-btn create-btn">Login</a>
+              <a href="{{route('customer.login')}}" class="primary-btn create-btn">Login</a>
             </div>
           </div>
         </div>

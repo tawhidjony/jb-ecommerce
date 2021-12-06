@@ -132,4 +132,17 @@ class AuthController extends Controller
         }
     }
 
+    public function shippingUpdate(Request $request)
+    {
+        $data = $request->all();
+        $shipping = Shipping::where('user_id', auth()->user()->id)->first();
+        $shipping->update([
+            'address' => $data['address'],
+            'state' => $data['state'],
+            'post_code' => $data['post_code'],
+            'city' => $data['city'],
+        ]);
+        return redirect()->back()->with('success', 'Shipping address updated successfully');
+    }
+
 }
