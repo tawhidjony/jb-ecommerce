@@ -6,8 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>{{ config('Apartment Management System', 'Apartment Management System') }}</title>
-
+    <title>JB E-commerce - @yield('title')</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
