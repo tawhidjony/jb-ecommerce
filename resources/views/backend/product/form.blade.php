@@ -59,11 +59,12 @@
                 </div>
                 <div class="form-group">
                     <label for="formControlRange">Variation </label>
-                    <select multiple data-role="tagsinput" class="form-control" name="variation[]"></select>
+                    <select multiple data-role="tagsinput" class="form-control" name="variation[]" required></select>
                 </div>
+
                 <div class="form-group">
                     <label for="price">{{ __('Product Description') }}</label>
-                    <textarea id="mytextarea" name="description">Hello, World!</textarea>
+                    <textarea id="mytextarea" name="description"></textarea>
 
                 </div>
 

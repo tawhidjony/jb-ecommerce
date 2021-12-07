@@ -9,7 +9,7 @@
                     <h5 class="mb-0">Product List</h5>
                 </div>
                 <div class="ml-auto">
-                    <a href="{{route('product.create')}}" class="btn btn-white radius-15">Create User</a>
+                    <a href="{{route('product.create')}}" class="btn btn-white radius-15">Create Product</a>
                 </div>
             </div>
         </div>

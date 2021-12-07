@@ -5,7 +5,7 @@
         <div class="card-header border-bottom-0">
             <div class="d-flex align-items-center">
                 <div>
-                    <h5 class="mb-0">Edit Category</h5>
+                    <h5 class="mb-0">Edit Slider</h5>
                 </div>
                 <div class="ml-auto">
                     <a href="{{ route('slider.index') }}" class="btn btn-white radius-15">Back</a>

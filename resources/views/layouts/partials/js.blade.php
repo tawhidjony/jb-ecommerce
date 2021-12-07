@@ -8,15 +8,8 @@
 	<script src="{{asset('assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
 	<script src="{{asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
 	<script src="{{asset('assets/plugins/bootstrap-treeview-checkbox/js/bootstrap-checkbox-tree.js')}}"></script>
-	<!-- Vector map JavaScript -->
-	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-in-mill.js')}}"></script>
-	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js')}}"></script>
-	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js')}}"></script>
-	<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-au-mill.js')}}"></script>
-	<script src="{{asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/input-tags/js/tagsinput.js')}}"></script>
+
+
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>

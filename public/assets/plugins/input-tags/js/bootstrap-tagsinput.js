@@ -33,8 +33,7 @@
     },
     trimValue: false,
     allowDuplicates: false,
-    triggerChange: true,
-    editOnBackspace: false
+    triggerChange: true
   };
 
   /**
@@ -45,7 +44,7 @@
     this.itemsArray = [];
 
     this.$element = $(element);
-    this.$element.addClass('sr-only');
+    this.$element.hide();
 
     this.isSelect = (element.tagName === 'SELECT');
     this.multiple = (this.isSelect && element.hasAttribute('multiple'));
@@ -120,7 +119,7 @@
       if (existing && !self.options.allowDuplicates) {
         // Invoke onTagExists
         if (self.options.onTagExists) {
-          var $existingTag = $(".badge", self.$container).filter(function() { return $(this).data("item") === existing; });
+          var $existingTag = $(".tag", self.$container).filter(function() { return $(this).data("item") === existing; });
           self.options.onTagExists(item, $existingTag);
         }
         return;
@@ -141,14 +140,15 @@
 
       // add a tag element
 
-      var $tag = $('<span class="' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"></span></span>');
+      var $tag = $('<span class="tag ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"></span></span>');
       $tag.data('item', item);
       self.findInputWrapper().before($tag);
+      $tag.after(' ');
 
       // Check to see if the tag exists in its raw or uri-encoded form
       var optionExists = (
-        $('option[value="' + encodeURIComponent(itemValue).replace(/"/g, '\\"') + '"]', self.$element).length ||
-        $('option[value="' + htmlEncode(itemValue).replace(/"/g, '\\"') + '"]', self.$element).length
+        $('option[value="' + encodeURIComponent(itemValue) + '"]', self.$element).length ||
+        $('option[value="' + htmlEncode(itemValue) + '"]', self.$element).length
       );
 
       // add <option /> if item represents a value not present in one of the <select />'s options
@@ -200,7 +200,7 @@
         if (beforeItemRemoveEvent.cancel)
           return;
 
-        $('.badge', self.$container).filter(function() { return $(this).data('item') === item; }).remove();
+        $('.tag', self.$container).filter(function() { return $(this).data('item') === item; }).remove();
         $('option', self.$element).filter(function() { return $(this).data('item') === item; }).remove();
         if($.inArray(item, self.itemsArray) !== -1)
           self.itemsArray.splice($.inArray(item, self.itemsArray), 1);
@@ -222,7 +222,7 @@
     removeAll: function() {
       var self = this;
 
-      $('.badge', self.$container).remove();
+      $('.tag', self.$container).remove();
       $('option', self.$element).remove();
 
       while(self.itemsArray.length > 0)
@@ -237,7 +237,7 @@
      */
     refresh: function() {
       var self = this;
-      $('.badge', self.$container).each(function() {
+      $('.tag', self.$container).each(function() {
         var $tag = $(this),
             item = $tag.data('item'),
             itemValue = self.options.itemValue(item),
@@ -246,7 +246,7 @@
 
           // Update tag's class and inner text
           $tag.attr('class', null);
-          $tag.addClass('badge ' + htmlEncode(tagClass));
+          $tag.addClass('tag ' + htmlEncode(tagClass));
           $tag.contents().filter(function() {
             return this.nodeType == 3;
           })[0].nodeValue = htmlEncode(itemText);
@@ -275,7 +275,7 @@
             return self.options.itemValue(item).toString();
           });
 
-      self.$element.val( val.join(self.options.delimiter) );
+      self.$element.val(val, true);
 
       if (self.options.triggerChange)
         self.$element.trigger('change');
@@ -350,31 +350,25 @@
 
       // typeahead.js
       if (self.options.typeaheadjs) {
-        // Determine if main configurations were passed or simply a dataset
-        var typeaheadjs = self.options.typeaheadjs;
-        if (!$.isArray(typeaheadjs)) {
-            typeaheadjs = [null, typeaheadjs];
-        }
+          var typeaheadConfig = null;
+          var typeaheadDatasets = {};
 
-        $.fn.typeahead.apply(self.$input, typeaheadjs).on('typeahead:selected', $.proxy(function (obj, datum, name) {
-          var index = 0;
-          typeaheadjs.some(function(dataset, _index) {
-            if (dataset.name === name) {
-              index = _index;
-              return true;
-            }
-            return false;
-          });
-
-          // @TODO Dep: https://github.com/corejavascript/typeahead.js/issues/89
-          if (typeaheadjs[index].valueKey) {
-            self.add(datum[typeaheadjs[index].valueKey]);
+          // Determine if main configurations were passed or simply a dataset
+          var typeaheadjs = self.options.typeaheadjs;
+          if ($.isArray(typeaheadjs)) {
+            typeaheadConfig = typeaheadjs[0];
+            typeaheadDatasets = typeaheadjs[1];
           } else {
-            self.add(datum);
+            typeaheadDatasets = typeaheadjs;
           }
 
-          self.$input.typeahead('val', '');
-        }, self));
+          self.$input.typeahead(typeaheadConfig, typeaheadDatasets).on('typeahead:selected', $.proxy(function (obj, datum) {
+            if (typeaheadDatasets.valueKey)
+              self.add(datum[typeaheadDatasets.valueKey]);
+            else
+              self.add(datum);
+            self.$input.typeahead('val', '');
+          }, self));
       }
 
       self.$container.on('click', $.proxy(function(event) {
@@ -420,9 +414,6 @@
             if (doGetCaretPosition($input[0]) === 0) {
               var prev = $inputWrapper.prev();
               if (prev.length) {
-                if (self.options.editOnBackspace === true) {
-                  $input.val(prev.data('item'));
-                }
                 self.remove(prev.data('item'));
               }
             }
@@ -464,7 +455,7 @@
         var textLength = $input.val().length,
             wordSpace = Math.ceil(textLength / 5),
             size = textLength + wordSpace + 1;
-        $input.attr('size', Math.max(this.inputSize, size));
+        $input.attr('size', Math.max(this.inputSize, $input.val().length));
       }, self));
 
       self.$container.on('keypress', 'input', $.proxy(function(event) {
@@ -494,7 +485,7 @@
          var textLength = $input.val().length,
             wordSpace = Math.ceil(textLength / 5),
             size = textLength + wordSpace + 1;
-         $input.attr('size', Math.max(this.inputSize, size));
+         $input.attr('size', Math.max(this.inputSize, $input.val().length));
       }, self));
 
       // Remove icon clicked
@@ -502,7 +493,7 @@
         if (self.$element.attr('disabled')) {
           return;
         }
-        self.remove($(event.target).closest('.badge').data('item'));
+        self.remove($(event.target).closest('.tag').data('item'));
       }, self));
 
       // Only add existing value as tags when using strings as tags
@@ -689,4 +680,3 @@
     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
   });
 })(window.jQuery);
-

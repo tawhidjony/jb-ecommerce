@@ -43,8 +43,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $news = $request->variation;
-        return $news;
+
+
       try {
         $request->validate([
             'name' => 'required',
@@ -135,6 +135,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $productDelete = Product::find($id);
+        if ($productDelete->delete()) {
+            return redirect()->route('product.index')->with('Product Deleted Successfully');
+        }else{
+            return redirect()->route('product.index')->with('Product Deleted Failed');
+        }
     }
 }
