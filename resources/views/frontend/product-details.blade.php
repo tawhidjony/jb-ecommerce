@@ -17,7 +17,9 @@
               </div>
               <div class="navigration-image-area slider-nav">
                     @foreach ($productShow->product_img as $items)
-                        <img class="small-img" src="{{asset($items)}}" alt="">
+                      <div class="small-img">
+                      <img  src="{{asset($items)}}" alt="">
+                      </div>  
                     @endforeach
               </div>
             </div>
