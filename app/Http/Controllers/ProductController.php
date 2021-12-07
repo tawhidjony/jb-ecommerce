@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class ProductController extends Controller
 {
@@ -17,10 +19,21 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('backend.product.index', compact('products'));
+        $categories = Category::all();
+        $perPage = $request-> perPage ? $request->perPage : 20;
+        $products = $this->searchFilter($request->category_id, $perPage);
+        return view('backend.product.index', compact('products', 'categories'));
+    }
+
+    public function searchFilter($categoryProduct, $perPage)
+    {
+        $filterProduct = Product::query();
+        if ($categoryProduct) {
+            $filterProduct->where('category_id', $categoryProduct);
+        }
+        return $filterProduct->with(['category'])->orderBy('created_at', 'DESC')->paginate($perPage);
     }
 
     /**
@@ -135,11 +148,25 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $productDelete = Product::find($id);
-        if ($productDelete->delete()) {
-            return redirect()->route('product.index')->with('Product Deleted Successfully');
-        }else{
-            return redirect()->route('product.index')->with('Product Deleted Failed');
+        try {
+            $productDelete = Product::find($id);
+            if ($productDelete) {
+                DB::beginTransaction();
+                if($productDelete->product_img != null){
+                    foreach($productDelete->product_img as $img){
+                        Storage::delete($img);
+                    }
+                }
+                Storage::delete($productDelete->thumbnail);
+                $productDelete->delete();
+                DB::commit();
+                return redirect()->route('product.index')->with('Product Deleted Successfully');
+            }else{
+                return redirect()->route('product.index')->with('Product Deleted Failed');
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
         }
     }
 }

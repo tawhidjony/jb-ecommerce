@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('price');
             $table->string('qty');
             $table->json('variation');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('thumbnail');
             $table->json('product_img');
             $table->timestamps();
