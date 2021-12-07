@@ -98,8 +98,8 @@
                             <div class="shiping-address-delivary">
                                 <h3>Delivery Address</h3>
                                 <div class="address-contain">
-                                    <h4 class="user-name">{{Auth::user()->full_name}}</h4>
-                                    <span class="user-phone-number">{{Auth::user()->phone}}</span>
+                                    <h4 class="user-name">{{Auth::user() ? Auth::user()->full_name:""}}</h4>
+                                    <span class="user-phone-number">{{Auth::user() ? Auth::user()->phone :""}}</span>
                                     <span class="user-address">
                                         @if(!$shippingAddress == "")
                                             {{$shippingAddress->address}},
