@@ -21,6 +21,7 @@
             </a>
         </li>
         @endif
+        {{-- @if(auth()->user()->can('slider.index') || auth()->user()->hasRole('super-admin'))
         <li>
             <a href="{{route('slider.index')}}" >
                 <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
@@ -28,31 +29,34 @@
                 <div class="menu-title">Slider</div>
             </a>
         </li>
-        <li>
-            <a href="{{route('category.index')}}" >
-                <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
-                </div>
-                <div class="menu-title">Category</div>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{route('product.index')}}" >
-                <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
-                </div>
-                <div class="menu-title">Product</div>
-            </a>
-        </li>
-
-
-        <li>
-            <a href="{{route('order.index')}}" >
-                <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
-                </div>
-                <div class="menu-title">Order</div>
-            </a>
-        </li>
-
+        @endif --}}
+        @if(auth()->user()->can('category.index') || auth()->user()->hasRole('super-admin'))
+            <li>
+                <a href="{{route('category.index')}}" >
+                    <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
+                    </div>
+                    <div class="menu-title">Category</div>
+                </a>
+            </li>
+        @endif
+        @if(auth()->user()->can('product.index') || auth()->user()->hasRole('super-admin'))
+            <li>
+                <a href="{{route('product.index')}}" >
+                    <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
+                    </div>
+                    <div class="menu-title">Product</div>
+                </a>
+            </li>
+        @endif
+        @if(auth()->user()->can('order.index') || auth()->user()->hasRole('super-admin'))
+            <li>
+                <a href="{{route('order.index')}}" >
+                    <div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
+                    </div>
+                    <div class="menu-title">Order</div>
+                </a>
+            </li>
+        @endif
         @if(auth()->user()->can('users.index') || auth()->user()->can('role.index') || auth()->user()->hasRole('super-admin'))
         <li>
             <a href="javascript:;" class="has-arrow">

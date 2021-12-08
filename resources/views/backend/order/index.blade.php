@@ -8,9 +8,7 @@
                 <div>
                     <h5 class="mb-0">Order</h5>
                 </div>
-                <div class="ml-auto">
-                    <a href="{{route('order.create')}}" class="btn btn-white radius-15">Create User</a>
-                </div>
+
             </div>
         </div>
         <div class="p-0 card-body">
@@ -30,10 +28,10 @@
                         @forelse($order as $key => $item )
                             <tr>
                                 <td>{{$key + 1}}</td>
-                                <td>{{$item->user->name}}</td>
+                                <td>{{$item->user->full_name}}</td>
                                 <td>{{$item->shipping->address}}</td>
                                 <td>{{$item->payment->payment_method}}</td>
-                                <td>{{$item->order_status == 0 ? 'Pending' : 'Complete'}}</td>
+                                <td>@if($item->order_status == 0) <span class="alert-warning px-2 py-1 radius-15">Pending</span> @else <span class="alert-success px-2 py-1 radius-15">Complete</span>@endif</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{route('order.show', $item->id)}}"><button class="btn btn-danger btn-sm "><i class="bx bx-edit-alt"></i>Show </button></a>

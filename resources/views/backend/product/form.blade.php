@@ -59,12 +59,16 @@
                 </div>
                 <div class="form-group">
                     <label for="formControlRange">Variation </label>
-                    <select multiple data-role="tagsinput" class="form-control" name="variation[]" required></select>
+                    <select multiple data-role="tagsinput" class="form-control" name="variation[]"  required>
+                        {{-- @foreach ($newItem->variation as $vari )
+                            <option value="{{$vari}}">{{$vari}}</option>
+                        @endforeach --}}
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="price">{{ __('Product Description') }}</label>
-                    <textarea id="mytextarea" name="description"></textarea>
+                    <textarea id="mytextarea" name="description">{{$newItem->description}}</textarea>
 
                 </div>
 

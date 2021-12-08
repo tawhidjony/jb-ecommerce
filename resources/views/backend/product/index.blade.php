@@ -55,7 +55,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        {{-- <a href="{{route('category.edit', $item->id)}}"><button class="btn btn-danger btn-sm "><i class="bx bx-edit-alt"></i>Edit </button></a> --}}
+                                        <a href="{{route('product.edit', $item->id)}}"><button class="btn btn-danger btn-sm "><i class="bx bx-edit-alt"></i>Edit </button></a>
                                         <form action="{{route('product.destroy', $item->id)}}", method="POST" class="ml-3">
                                             @csrf
                                             @method('DELETE')

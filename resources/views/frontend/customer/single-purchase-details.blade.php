@@ -61,7 +61,7 @@
 
                     <div class="shiping-address d-flex">
                         <h3>Delivery Address</h3>
-                        <h4 class="user-name">{{Auth::user()->name}}</h4>
+                        <h4 class="user-name">{{Auth::user()->full_name}}</h4>
                         <span class="user-phone-number">{{Auth::user()->phone}}</span>
                         <span class="user-address">{{ $purchaseOrderDetails->shipping->address}} {{ $purchaseOrderDetails->shipping->state }} {{ $purchaseOrderDetails->shipping->post_code }} - {{ $purchaseOrderDetails->shipping->city }}</span>
                     </div>

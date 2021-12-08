@@ -6,7 +6,7 @@
             <div class="card radius-15" style="height: 235px">
                 <div class="card-header">User Information</div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Name: {{$order->user->name}}</li>
+                    <li class="list-group-item">Name: {{$order->user->full_name}}</li>
                     <li class="list-group-item">Email: {{$order->user->email}}</li>
                     <li class="list-group-item">Phone: {{$order->user->phone}}</li>
                 </ul>

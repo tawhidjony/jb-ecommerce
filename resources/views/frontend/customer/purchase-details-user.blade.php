@@ -20,8 +20,8 @@
                                     <h3>My Purchase</h3>
                                 </div>
                                 <div class="search-ber">
-                                    <form class="my-2 form-inline ">
-                                        <input class="form-control" type="search"
+                                    <form class="my-2 form-inline" method="GET">
+                                        <input class="form-control" type="search" name="search"
                                             placeholder="Search by Order ID or Product Name" aria-label="Search">
                                         <button class="primary-btn" type="submit">Search</button>
                                     </form>
@@ -32,7 +32,13 @@
                                         <div class="header-ber d-flex justify-content-between">
                                             <div class="left-side">
                                                 <span class="delivered">ORDER STATUS</span>
-                                                <span class="p-status">ORDER PLACED</span>
+                                                @if ( $item->order_status === 1)
+                                                    <span  class="p-status">Order Completed</span>
+                                                @elseif ($item->shipping_status === 1)
+                                                    <span  class="p-status">Shiping Procesing</span>
+                                                @elseif ( $item->status === 1)
+                                                    <span  class="p-status">ORDER PLACEd</span>
+                                                @endif
                                             </div>
 
                                             <div class="order-id">
@@ -67,7 +73,7 @@
 
                                                 <div class="shiping-address d-flex">
                                                     <h3>Delivery Address</h3>
-                                                    <h4 class="user-name">{{Auth::user()->name}}</h4>
+                                                    <h4 class="user-name">{{Auth::user()->full_name}}</h4>
                                                     <span class="user-phone-number">{{Auth::user()->phone}}</span>
                                                     <span class="user-address">{{ $item->shipping->address}} {{ $item->shipping->state }} {{ $item->shipping->post_code }} - {{ $item->shipping->city }}</span>
                                                 </div>

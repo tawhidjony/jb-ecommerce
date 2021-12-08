@@ -17,17 +17,34 @@ class CustomerController extends Controller
         return view('frontend.customer.personal-details-user', compact('user', 'shipping'));
     }
 
-    public function personalDetails()
+    public function personalDetails(Request $request)
     {
+
         $user = Auth::user();
-        $purchaseOrder = Order::where('user_id', $user->id)->with(['user', 'shipping', 'payment', 'order_details.product'])->get();
-        // return $purchaseOrder;
+        $orderSearch = $request->search ? $request->search :"";
+        return  $orderSearch;
+        $purchaseOrder = $this->searchFilter($orderSearch, $user->id);
         return view('frontend.customer.purchase-details-user', compact('purchaseOrder'));
     }
+
+    public function searchFilter($search, $userId)
+    {
+        $filterProduct = Order::query();
+        if($userId){
+            $filterProduct->where('user_id', $userId);
+        }
+        if ($search) {
+            $filterProduct->where('id', 'like', '%' . $search . '%');
+        }
+        return $filterProduct->with(['user', 'shipping', 'payment', 'order_details.product'])->orderBy('created_at', 'DESC')->get();
+    }
+
     public function singlePurchaseDetails($id)
     {
         // $user = Auth::user();
         $purchaseOrderDetails = Order::with(['user', 'shipping', 'payment', 'order_details.product'])->find($id);
         return view('frontend.customer.single-purchase-details', compact('purchaseOrderDetails'));
     }
+
+
 }
