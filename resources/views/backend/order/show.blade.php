@@ -67,7 +67,7 @@
                                             <img src="{{URL::to($item->product[0]['thumbnail'])}}" width="35" alt="">
                                         </div>
                                     </td>
-                                    <td>{{$item->product[0]['name']}}</td>
+                                    <td width="40%">{{$item->product[0]['name']}}</td>
                                     <td>{{$item->variation}}</td>
                                     <td>{{$item->product[0]['price']}} BDT</td>
                                     <td>{{$item->qty}}</td>
