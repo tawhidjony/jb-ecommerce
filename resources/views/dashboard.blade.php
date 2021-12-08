@@ -25,7 +25,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h2 class="mb-0 text-white">{{$newOrder}} <i class='bx bxs-down-arrow-alt font-14 text-white'></i> </h2>
+                        <h2 class="mb-0 text-white">{{$newOrder}} <i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
                     </div>
                     <div class="ml-auto font-35 text-white"><i class='bx bx-shopping-bag' ></i>
                     </div>

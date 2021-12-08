@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index()
     {
         $category = Category::all();
-        $recentProduct = Product::orderBy('created_at', 'desc')->take(8)->get();
+        $recentProduct = Product::orderBy('created_at', 'desc')->take(10)->get();
         return view('frontend.welcome', compact('category', 'recentProduct'));
     }
 

@@ -45,7 +45,7 @@
                                 <td>
                                     <img src="{{URL::to($item->thumbnail)}}" style="width: 50px; height: 50px; border-radius: 50px; border: 1px solid; padding: 2px;">
                                 </td>
-                                <td>{{Str::limit($item->name)}}</td>
+                                <td><p title="{{$item->name}}" data-toggle="tooltip" data-placement="top">{{Str::limit($item->name,30)}}</p></td>
                                 <td>{{$item->category->name}}</td>
                                 <td>{{$item->price}}</td>
                                 <td>

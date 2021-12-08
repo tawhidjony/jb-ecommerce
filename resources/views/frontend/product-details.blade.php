@@ -33,15 +33,15 @@
                 </div>
                 <div class="rating-area d-flex align-items-center">
                   <div class="comon-div ster-image d-flex align-items-center">
-                    <span class="ster-count">5</span>
+                    <span class="ster-count">0</span>
                     <img src="{{asset('frontend/assets/images/review-image/5star.png')}}" alt="">
                   </div>
                   <div class="comon-div rating-count d-flex align-items-center">
-                    <span class="count">10</span>
+                    <span class="count">0</span>
                     <h5>Rating</h5>
                   </div>
                   <div class="comon-div sold d-flex align-items-center">
-                    <span class="sold-count">10</span>
+                    <span class="sold-count">0</span>
                     <h5>Sold</h5>
                   </div>
                 </div>
