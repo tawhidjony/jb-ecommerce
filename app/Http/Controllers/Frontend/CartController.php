@@ -74,7 +74,7 @@ class CartController extends Controller
                   $data['shipping_id']  = $request->shipping_id;
                   $data['user_id']      = Auth::user()->id;
                   $data['order_total']  = Cart::subtotal();
-                  $data['status']       = 1;
+                  $data['status']       = 0;
                   $order = Order::create($data);
 
                   if($order){

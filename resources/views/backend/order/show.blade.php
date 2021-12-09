@@ -38,7 +38,7 @@
                         <form action="{{route('shipping.status')}}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{$order->id}}">
-                            <button type="submit" {{$order->shipping_status === 1 ? 'disabled':""}} class="float-right btn btn-primary mr-2" >Shipping</button>
+                            <button type="submit" {{$order->shipping_status === 3 || $order->shipping_status === 1 ? 'disabled':""}} class="float-right mr-2 btn btn-primary" >Shipping</button>
                         </form>
 
                         <form action="{{route('order.status')}}" method="POST">

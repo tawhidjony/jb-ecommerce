@@ -7,9 +7,9 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h2 class="mb-0 text-white">{{$totalProduct}} <i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                        <h2 class="mb-0 text-white">{{$totalProduct}} <i class='text-white bx bxs-up-arrow-alt font-14'></i> </h2>
                     </div>
-                    <div class="ml-auto font-35 text-white"><i class='bx bxl-product-hunt'></i>
+                    <div class="ml-auto text-white font-35"><i class='bx bxl-product-hunt'></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -25,9 +25,9 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h2 class="mb-0 text-white">{{$newOrder->count()}} <i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                        <h2 class="mb-0 text-white">{{$newOrder->count()}} <i class='text-white bx bxs-up-arrow-alt font-14'></i> </h2>
                     </div>
-                    <div class="ml-auto font-35 text-white"><i class='bx bx-shopping-bag' ></i>
+                    <div class="ml-auto text-white font-35"><i class='bx bx-shopping-bag' ></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -43,14 +43,17 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h2 class="mb-0 text-white">{{$shippingProcessing->count()}} <i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                        <h2 class="mb-0 text-white">
+                            {{$shippingProcessing->count()}}
+                            <i class='text-white bx bxs-up-arrow-alt font-14'></i>
+                        </h2>
                     </div>
-                    <div class="ml-auto font-35 text-white"><i class='bx bxs-truck' ></i>
+                    <div class="ml-auto text-white font-35"><i class='bx bxs-truck' ></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0 text-white">Processing for shipping</p>
+                        <p class="mb-0 text-white">Processing shipping</p>
                     </div>
                 </div>
             </div>
@@ -61,9 +64,9 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h2 class="mb-0 text-white">{{$orderComplete->count()}} <i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                        <h2 class="mb-0 text-white">{{$orderComplete->count()}} <i class='text-white bx bxs-up-arrow-alt font-14'></i> </h2>
                     </div>
-                    <div class="ml-auto font-35 text-white"><i class='bx bx-package' ></i>
+                    <div class="ml-auto text-white font-35"><i class='bx bx-package' ></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">

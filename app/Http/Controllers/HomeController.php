@@ -29,7 +29,7 @@ class HomeController extends Controller
         $totalProduct = Product::all()->count();
         $totalOrder = Order::query();
         $newOrder = Order::where('status', 0)->get();
-        $shippingProcessing = Order::where('shipping_status', 0)->get();
+        $shippingProcessing = Order::where('shipping_status', 1)->get();
         $orderComplete = Order::where('order_status', 1)->get();
         return view('dashboard', compact('totalProduct', 'newOrder', 'shippingProcessing', 'orderComplete'));
     }

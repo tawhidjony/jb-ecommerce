@@ -22,7 +22,6 @@ class CustomerController extends Controller
 
         $user = Auth::user();
         $orderSearch = $request->search ? $request->search :"";
-        return  $orderSearch;
         $purchaseOrder = $this->searchFilter($orderSearch, $user->id);
         return view('frontend.customer.purchase-details-user', compact('purchaseOrder'));
     }
