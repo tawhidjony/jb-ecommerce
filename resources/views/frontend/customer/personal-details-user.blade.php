@@ -24,17 +24,17 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <input type="text" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                       placeholder="EX: Alam Jahangir" name="full_name" value="{{$user->full_name}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                       placeholder="Enter email" name="email" value="{{$user->email}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Phone Number</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <input type="number" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                       placeholder="Ex: +60131232143" name="phone" value="{{$user->phone}}">
                   </div>
                   <div class="form-group">
@@ -78,15 +78,15 @@
                     @csrf
                   <div class="form-group">
                     <label for="inputCurrentPassword">Current password</label>
-                    <input type="password" name="old_password" class="form-control" id="inputCurrentPassword" placeholder="Password">
+                    <input type="password" required name="old_password" class="form-control" id="inputCurrentPassword" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="inputNewPassword">New Password</label>
-                    <input type="password" name="password" class="form-control" id="inputNewPassword" placeholder="Password">
+                    <input type="password" required name="password" class="form-control" id="inputNewPassword" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="inputRetypeNewPassword">Retype New password</label>
-                    <input type="password" name="password_confirmation" class="form-control" id="inputRetypeNewPassword" placeholder="Password">
+                    <input type="password" required name="password_confirmation" class="form-control" id="inputRetypeNewPassword" placeholder="Password">
                   </div>
                   <button type="submit" class="primary-btn">Update Password</button>
                 </form>
@@ -116,7 +116,7 @@
                       <label for="address">Address</label>
                       <span class="address-line">
                           {{$shipping->address}}
-                          {{$shipping->status}}
+                          {{$shipping->state}}
                           {{$shipping->city}}
                           {{$shipping->post_code}}
                         </span>
@@ -141,32 +141,32 @@
                               @csrf
                             <div class="form-group">
                               <label for="exampleInputName">Name</label>
-                              <input type="text"  value="{{Auth::user()->full_name}}" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+                              <input type="text" required value="{{Auth::user()->full_name}}" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
                                 placeholder="EX: Alam Jahangir">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPhoneNumber">Phone Number</label>
-                              <input type="number" value="{{Auth::user()->phone}}" class="form-control" id="exampleInputPhoneNumber"
+                              <input type="number" required value="{{Auth::user()->phone}}" class="form-control" id="exampleInputPhoneNumber"
                                 aria-describedby="emailHelp" placeholder="Ex: +60131232143">
-                              <input type="hidden" name="shipping_id" value="{{Auth::user()->id}}" >
+                              <input type="hidden"required name="shipping_id" value="{{Auth::user()->id}}" >
                             </div>
                             <div class="form-group">
                               <label for="exampleFormControlAddress">Address</label>
-                              <textarea name="address" class="form-control" id="exampleFormControlAddress" rows="2">{{$shipping->address}}</textarea>
+                              <textarea name="address" required class="form-control" id="exampleFormControlAddress" rows="2">{{$shipping->address}}</textarea>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputState">State</label>
-                              <input type="text" name="state" value="{{$shipping->state}}" class="form-control" id="exampleInputState"
+                              <input type="text" required name="state" value="{{$shipping->state}}" class="form-control" id="exampleInputState"
                                 aria-describedby="emailHelp" placeholder="EX: Selangor">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputCity">City</label>
-                              <input type="text" name="city" value="{{$shipping->city}}" class="form-control" id="exampleInputCity" aria-describedby="emailHelp"
+                              <input type="text" required name="city" value="{{$shipping->city}}" class="form-control" id="exampleInputCity" aria-describedby="emailHelp"
                                 placeholder="EX: Petaling Jaya">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPostcode">Postcode</label>
-                              <input type="number" name="post_code" value="{{$shipping->post_code}}" class="form-control" id="exampleInputPostcode"
+                              <input type="number" required name="post_code" value="{{$shipping->post_code}}" class="form-control" id="exampleInputPostcode"
                                 aria-describedby="emailHelp" placeholder="Ex: 47301">
                             </div>
                             <div class="modal-footer">

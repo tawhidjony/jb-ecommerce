@@ -12,19 +12,19 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="User-id">User Name</label>
-                  <input type="text" name="name" class="form-control" id="User-id" placeholder="Ex: jbalam">
+                  <input type="text" required name="name" class="form-control" id="User-id" placeholder="Ex: jbalam">
                   <label for="phone-number">Phone Number</label>
-                  <input type="number" name="phone" class="form-control" id="phone-number" placeholder="Ex: +60123456789">
+                  <input type="number" required name="phone" class="form-control" id="phone-number" placeholder="Ex: +60123456789">
                   <label for="inputPassword4">Password</label>
-                  <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="Password">
+                  <input type="password" required name="password" class="form-control" id="inputPassword4" placeholder="Password">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="fullName">Full Name</label>
-                  <input type="text" name="full_name" class="form-control" id="fullName" placeholder="EX: Alam Jahangir">
+                  <input type="text" required name="full_name" class="form-control" id="fullName" placeholder="EX: Alam Jahangir">
                   <label for="Email">Email</label>
-                  <input type="email" name="email" class="form-control" id="Email" placeholder="something@something.com">
+                  <input type="email" required name="email" class="form-control" id="Email" placeholder="something@something.com">
                   <label for="inputPassword4">Retype Password</label>
-                  <input type="password" name="password_confirmation" class="form-control" id="inputPassword4" placeholder="Password">
+                  <input type="password" required name="password_confirmation" class="form-control" id="inputPassword4" placeholder="Password">
                 </div>
               </div>
               <div class="form-row address-area-2">
@@ -32,14 +32,14 @@
                   <label for="inputAddress">Address</label>
                   <textarea class="form-control"  name="address" id="inputAddress" rows="3" placeholder=" 221B Baker Street"></textarea>
                   <label for="inputPostcode">Postcode</label>
-                  <input type="number" name="post_code" class="form-control" id="inputPostcode" placeholder="Ex: 47301">
+                  <input type="number" required name="post_code" class="form-control" id="inputPostcode" placeholder="Ex: 47301">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="inputState">State</label>
-                  <input type="text" name="state" class="form-control" id="inputState" placeholder="EX: Selangor">
+                  <input type="text" required name="state" class="form-control" id="inputState" placeholder="EX: Selangor">
                   <label for="inputCity">City</label>
 
-                  <input type="text" name="city" class="form-control" id="inputCity" placeholder="EX: Petaling Jaya">
+                  <input type="text" required name="city" class="form-control" id="inputCity" placeholder="EX: Petaling Jaya">
 
 
                   <div class="custom-control custom-checkbox">

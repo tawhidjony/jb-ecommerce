@@ -22,17 +22,13 @@ class AuthController extends Controller
 
     public function attemptLogin(Request $request){
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required',
         ]);
-        try {
-            $credentials = $request->only('email', 'password');
-            if (Auth::attempt($credentials)) {
-                return redirect()->route('home.index')->withSuccess('Signed in');
-            }
-        } catch (\Exception $e) {
-            $e->getMessage();
-        }
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('home.index')->withSuccess('Signed in');
+        }    
     }
 
     public function register()

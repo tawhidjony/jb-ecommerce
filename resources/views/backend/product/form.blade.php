@@ -4,7 +4,7 @@
                 <div class="form-group">
                     <label for="name">{{ __('Name') }}</label>
                     <div class="input-group">
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                        <input id="name" required type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                             name="name" placeholder="Name" value="@if ($newItem->name){{ $newItem->name }}@else{{ old('name') }}@endif">
 
                         @if ($errors->has('name'))
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label for="price">{{ __('Price') }}</label>
                     <div class="input-group">
-                        <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
+                        <input id="price" required type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
                             name="price" placeholder="Price" value="@if ($newItem->price){{ $newItem->price }}@else{{ old('price') }}@endif">
                         @if ($errors->has('price'))
                             <span class="invalid-feedback" role="alert">

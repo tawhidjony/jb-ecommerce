@@ -117,7 +117,7 @@
                 <a href="#" class="select">All</a>
               </div>
               <div class="v-list"><a href="#">5 Star <span class="five-star-count">(0)</span> </a></div>
-              <div class="v-list"><a href="#">4 Star <span class="four-star-count">(0)</span> </a></div>
+              <div class="v-list"><a href="#">4 Star <span class="four-star-count">(1)</span> </a></div>
               <div class="v-list"><a href="#">3-Star <span class="three-star-count">(0)</span> </a></div>
               <div class="v-list"><a href="#">2 Star <span class="two-star-count">(0)</span> </a></div>
               <div class="v-list"><a href="#">1 Star <span class="one-star-count">(0)</span> </a></div>
